@@ -1,0 +1,16 @@
+<div class="container">
+    <ul class="posts">
+        <li class="post" v-for="n in names.length" :key="n">
+            <div class="post__author">
+                <icon :name="'avatar'+ (forever(10) + 1)" class="post__img"/>
+                <h3 class="post__nickname">{{names[num]}}</h3>
+            </div>
+
+            <framework />
+
+            <issues />
+
+            <time class="post__date">{{random(31) + ' ' + months[random(months.length-1)]}}</time>
+        </li>
+    </ul>
+</div>
