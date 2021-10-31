@@ -1,0 +1,27 @@
+@import "~reseter.css/src/scss/minireseter";
+
+a {
+  text-decoration: none;
+  color: black;
+
+  &:active {
+    color: black;
+  }
+}
+
+html, body {
+  font-family: 'Inter', sans-serif;
+}
+
+#app {
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+
+  .x-container {
+    width: 1200px;
+  }
+}

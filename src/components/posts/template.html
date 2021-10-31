@@ -1,0 +1,33 @@
+<div class="container">
+    <ul class="posts">
+        <li class="post" v-for="n in names.length">
+            <div class="post__author">
+                <icon :name="'avatar'+n" class="post__img"/>
+                <h3 class="post__nickname">{{names[n-1]}}</h3>
+            </div>
+<!--             slot-->
+            <div class="framework">
+                <h2 class="framework__name">Vue.js</h2>
+                <h4 class="framework__desc"><span>JavaScript</span> framework for building interactive web applications ⚡</h4>
+
+                <div class="utils">
+                    <div class="util star">
+                        <a href="#" class="util__name">
+                            <img src="../../assets/icons/star.svg" alt="star" class="util__icon">
+                            <h5 class="util__title">Star</h5>
+                        </a>
+                        <div class="util__num">156k</div>
+                    </div>
+                    <div class="util fork">
+                        <a href="#" class="util__name">
+                            <img src="../../assets/icons/fork.svg" alt="fork" class="util__icon">
+                            <h5 class="util__title">Fork</h5>
+                        </a>
+                        <div class="util__num">4</div>
+                    </div>
+                </div>
+            </div>
+<!--            end slot-->
+        </li>
+    </ul>
+</div>
