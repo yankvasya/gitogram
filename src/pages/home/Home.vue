@@ -1,10 +1,10 @@
 <template>
   <header>
     <top>
-      <template v-slot:topMenu>
+      <template #topMenu>
         <topMenu />
       </template>
-      <template v-slot:stories>
+      <template #stories>
         <stories />
       </template>
     </top>

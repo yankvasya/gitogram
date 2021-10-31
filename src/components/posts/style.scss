@@ -11,7 +11,7 @@
   .post {
     width: 100%;
     &:not(:last-child) {
-      margin-bottom: 21px;
+      margin-bottom: 24px;
     }
 
     &__author {
@@ -34,128 +34,15 @@
       color: #262626;
       margin-left: 14px;
     }
-  }
-}
 
-.framework {
-  background: #FFFFFF;
-  border: 1px solid #F1F1F1;
-  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.07);
-  border-radius: 10px;
-  padding: 24px 20px;
-  width: 100%;
-
-  &__name {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 26px;
-    line-height: 28px;
-    color: #292929;
-  }
-
-  &__desc {
-    margin-top: 15px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 160%;
-    color: #404040;
-  }
-
-  span {
-    font-weight: bold;
-  }
-
-  .utils {
-    display: flex;
-    margin-top: 32px;
-
-    .util {
-      display: flex;
-
-
-      &__name {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-width: 73px;
-        background: #FAFBFC;
-        box-shadow: inset 1px -1px 0px rgba(27, 31, 35, 0.12), inset 0px 1px 0px rgba(27, 31, 35, 0.12);
-        padding: 5px 12px;
-
-        transition: background-color .3s;
-
-        &:hover {
-          background: #eeebeb;
-          box-shadow: inset 1px -1px 0px rgba(27, 31, 35, 0.12), inset 0px 1px 0px rgba(27, 31, 35, 0.12),
-          1px 1px 3px rgba(27,31,35, .5);
-
-          transition: all .5s;
-        }
-      }
-
-      &__title {
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 18px;
-        color: #24292E;
-      }
-
-      &__icon {
-        width: 16px;
-        height: 16px;
-        margin-right: 4px;
-      }
-
-      &__num {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 5px 12px;
-        background: #FFFFFF;
-        box-shadow: inset 0px -1px 0px rgba(27, 31, 35, 0.12), inset 0px 1px 0px rgba(27, 31, 35, 0.12);
-        border-left: 1px solid rgba(27, 31, 35, 0.15);
-      }
-      
-      &:first-child {
-        .util__name {
-          border-radius: 6px 0 0 6px;
-        }
-      }
-
-      &:last-child {
-        .util__num {
-          border-right: 1px solid rgba(27, 31, 35, 0.15);
-          border-radius: 0 6px 6px 0;
-        }
-      }
-
-      &.star {}
-
-      &.fork {
-        .util__title, .util__num {
-          font-style: normal;
-          font-weight: 600;
-          font-size: 12px;
-        }
-      }
+    &__date {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.4);
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

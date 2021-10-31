@@ -10,7 +10,6 @@
 
   
   &__item {
-
     &.profile {
       position: relative;
       display: flex;
@@ -25,7 +24,8 @@
         width: 0;
         height: 0;
         border: 2px solid transparent;
-        transition: width .2s, height .2s;
+        transition: width .4s, height .4s, border-bottom-color .2s, border-left-color .2s, border-top-color .2s,
+        border-right-color .2s;
       }
 
       &:hover {

@@ -1,0 +1,13 @@
+<div class="issues">
+    <a href="#" class="toggler" @click.prevent="hideShow">
+        <div class="toggler__title">{{isShow ? 'Hide' : 'Show'}} issues</div>
+        <img src="../../assets/icons/toggler.svg" alt="toggler" class="toggler__arrow">
+    </a>
+
+    <ul class="issues__content" v-if="isShow">
+        <li v-for="n in 3" class="issue" :key="n">
+            <h4 class="issue__username">{{names[random(names.length-1)]}}</h4>
+            <div class="issue__desc">{{issue[Math.floor(Math.random() * 3)]}}</div>
+        </li>
+    </ul>
+</div>
