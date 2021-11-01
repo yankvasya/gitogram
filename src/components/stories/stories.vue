@@ -5,10 +5,9 @@ import icon from '@/icons/icon'
 
 export default {
   name: 'stories',
-  data () {
-    return {
-      names: ['Josh', 'Andrew', 'Camille', 'Marcelle', 'Piter', 'Can', 'Iloveanime', 'Diself', 'Gartor', 'Camil']
-    }
+  props: {
+    names: Array,
+    random: Function
   },
   components: {
     icon
