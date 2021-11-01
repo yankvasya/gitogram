@@ -7,17 +7,17 @@ import issues from '@/components/issues/issues'
 
 export default {
   name: 'posts',
+  props: {
+    names: Array,
+    random: Function,
+    months: Array
+  },
   data () {
     return {
-      names: ['Josh', 'Andrew', 'Camille', 'Marcelle', 'Piter', 'Can', 'Iloveanime', 'Diself', 'Gartor', 'Camil'],
-      num: 0,
-      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      num: -1
     }
   },
   methods: {
-    random (n) {
-      return Math.floor(Math.random() * n)
-    },
     forever (n) {
       this.num = this.random(n)
       return this.num

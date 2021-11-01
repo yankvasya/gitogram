@@ -3,12 +3,10 @@
         <li v-for="n in 10" class="story new">
             <a href="#" class="story__link">
                 <div class="story__img-box">
-                    <icon :name="'avatar'+n" class="story__img"/>
+                    <icon :name="`avatar${random(names.length) +1}`" class="story__img"/>
                 </div>
-                <h3 class="story__name">{{names[n-1]}}</h3>
+                <h3 class="story__name">{{names[random(names.length)]}}</h3>
             </a>
         </li>
     </ul>
 </div>
-
-<!--`../../assets/img/avatars/avatar${n}.jpg`-->

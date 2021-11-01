@@ -5,13 +5,13 @@
         <topMenu />
       </template>
       <template #stories>
-        <stories />
+        <stories :names="names" :random="random"/>
       </template>
     </top>
   </header>
 
   <main>
-    <posts />
+    <posts :names="names" :random="random" :months="months"/>
   </main>
 </template>
 
@@ -28,6 +28,17 @@ export default {
     topMenu,
     stories,
     posts
+  },
+  methods: {
+    random (n) {
+      return Math.floor(Math.random() * n)
+    }
+  },
+  data () {
+    return {
+      names: ['Josh', 'Andrew', 'Camille', 'Marcelle', 'Piter', 'Can', 'Iloveanime', 'Diself', 'Gartor', 'Camil'],
+      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    }
   }
 }
 </script>

@@ -2,15 +2,15 @@
     <ul class="posts">
         <li class="post" v-for="n in names.length" :key="n">
             <div class="post__author">
-                <icon :name="'avatar'+ (forever(10) + 1)" class="post__img"/>
+                <icon :name="'avatar'+ (forever(names.length) + 1)" class="post__img"/>
                 <h3 class="post__nickname">{{names[num]}}</h3>
             </div>
 
-            <framework />
+            <framework :random="random"/>
 
-            <issues />
+            <issues :names="names" :random="random"/>
 
-            <time class="post__date">{{random(31) + ' ' + months[random(months.length-1)]}}</time>
+            <time class="post__date">{{`${random(28) + 1} ${months[random(months.length-1)]}`}}</time>
         </li>
     </ul>
 </div>
