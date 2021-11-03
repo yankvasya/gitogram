@@ -9,19 +9,15 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-a11y"
   ],
-  webpackFinal: config => {
+  webpackFinal: async (config, { configType }) => {
+    configType = 'DEVELOPMENT'
 
-    return {
-      ...config,
-      module: {
-        rules: [
-          {
-          test: /\.scss$/,
-          loaders: ['style-loader', 'css-loader', 'sass-loader'],
-          include: path.resolve(__dirname, '../')
-          }
-        ]
-      }
-    }
+    config.module.rules.push({
+      test: /\.scss$/,
+      use: ['style-loader', 'css-loader', 'sass-loader'],
+      include: path.resolve(__dirname, '../'),
+    });
+
+    return config;
   }
 }

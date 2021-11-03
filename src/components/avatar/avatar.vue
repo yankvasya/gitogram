@@ -6,7 +6,7 @@
         class="img"
       >
     </div>
-    <div class="username">{{title}}</div>
+    <div class="avatar-component__username">{{title}}</div>
   </div>
 </template>
 
