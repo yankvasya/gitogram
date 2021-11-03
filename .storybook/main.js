@@ -7,16 +7,39 @@ module.exports = {
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-a11y"
+    "@storybook/addon-actions",
+    "@storybook/addon-a11y",
+    "@storybook/addon-backgrounds",
+    "@storybook/addon-knobs",
+    "@storybook/addon-controls",
+    "@storybook/addon-storysource",
+    {
+      name: "@storybook/addon-storysource",
+      options: {
+        rule: {
+          test: [/\.stories\.jsx?$/],
+          include: [path.resolve(__dirname, '../src/components')],
+        },
+        loaderOptions: {
+          prettierConfig: { printWidth: 80, singleQuote: false },
+        },
+      },
+    },
   ],
   webpackFinal: async (config, { configType }) => {
     configType = 'DEVELOPMENT'
 
-    config.module.rules.push({
+    config.module.rules.push(
+      {
       test: /\.scss$/,
       use: ['style-loader', 'css-loader', 'sass-loader'],
       include: path.resolve(__dirname, '../'),
-    });
+      },
+      {
+        test: [/\.stories\.jsx?$/],
+        loader: require.resolve('@storybook/source-loader')
+      }
+      );
 
     return config;
   }
