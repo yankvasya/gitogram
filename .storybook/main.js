@@ -11,13 +11,12 @@ module.exports = {
     "@storybook/addon-a11y",
     "@storybook/addon-backgrounds",
     "@storybook/addon-knobs",
-    "@storybook/addon-actions",
     {
       name: "@storybook/addon-storysource",
       options: {
         rule: {
           test: [/\.stories\.jsx?$/],
-          include: [path.resolve(__dirname, ',30../src/components')],
+          include: [path.resolve(__dirname, '../src/components')],
         },
         loaderOptions: {
           prettierConfig: { printWidth: 80, singleQuote: false },
