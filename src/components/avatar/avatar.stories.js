@@ -32,23 +32,28 @@ export const defaultView = () => ({
   methods
 })
 
-defaultView.story = {
-  name: 'Стандартный вид'
-}
-
 export const activeView = () => ({
   components: {
     avatar
   },
+  props: {
+    title: {
+      default: text('Username', 'Default Name')
+    }
+  },
   template: `
     <avatar
-      title="User Name"
+      :title="title"
       src="https://cdn.pixabay.com/photo/2021/01/24/19/05/crane-5946169_960_720.jpg"
       alt="image"
       active
     />
   `
 })
+
+defaultView.story = {
+  name: 'Стандартный вид'
+}
 
 activeView.story = {
   name: 'Подсветка'

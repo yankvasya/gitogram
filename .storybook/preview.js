@@ -1,6 +1,13 @@
 import './style.scss';
 
 export const parameters = {
+  controls: {
+    actions: { argTypesRegex: '^on[A-Z].*' },
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i
+      }
+  },
   backgrounds: {
     default: 'twitter',
     values: [
