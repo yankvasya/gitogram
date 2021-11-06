@@ -1,10 +1,10 @@
 import avatar from './avatar'
-import { action } from '@storybook/addon-actions'
+// import { action } from '@storybook/addon-actions'
 import { withKnobs, text } from '@storybook/addon-knobs'
 
-const methods = {
-  onChange: action('onChange')
-}
+// const methods = {
+//   onChange: action('onChange')
+// }
 
 export default {
   title: 'avatar',
@@ -18,7 +18,7 @@ export default {
   }
 }
 
-export const defaultView = () => ({
+export const defaultViewAvatar = () => ({
   components: {
     avatar
   },
@@ -34,11 +34,11 @@ export const defaultView = () => ({
       src="https://cdn.pixabay.com/photo/2021/01/24/19/05/crane-5946169_960_720.jpg"
       alt="image"
     />
-  `,
-  methods
+  `
+  // methods
 })
 
-export const activeView = () => ({
+export const activeViewAvatar = () => ({
   components: {
     avatar
   },
@@ -55,14 +55,14 @@ export const activeView = () => ({
       alt="image"
       active
     />
-  `,
-  methods
+  `
+  // methods
 })
 
-defaultView.story = {
+defaultViewAvatar.story = {
   name: 'Стандартный вид'
 }
 
-activeView.story = {
+activeViewAvatar.story = {
   name: 'Подсветка'
 }
