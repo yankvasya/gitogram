@@ -16,9 +16,10 @@ $fifty: 50px;
     padding: 3px 5px;
     border-radius: 10px;
     background-color: #fd5b5b;
-    z-index: -1;
+    z-index: 0;
 
     &:hover {
+      cursor: pointer;
       background-color: #e72828;
     }
   }

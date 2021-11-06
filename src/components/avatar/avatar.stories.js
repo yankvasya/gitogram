@@ -9,7 +9,13 @@ const methods = {
 export default {
   title: 'avatar',
   components: { avatar },
-  decorators: [withKnobs]
+  decorators: [withKnobs],
+  argTypes: {
+    variant: {
+      options: ['primary', 'secondary'],
+      control: { type: 'radio' }
+    }
+  }
 }
 
 export const defaultView = () => ({
@@ -43,12 +49,14 @@ export const activeView = () => ({
   },
   template: `
     <avatar
+      @change="onChange"
       :title="title"
       src="https://cdn.pixabay.com/photo/2021/01/24/19/05/crane-5946169_960_720.jpg"
       alt="image"
       active
     />
-  `
+  `,
+  methods
 })
 
 defaultView.story = {
