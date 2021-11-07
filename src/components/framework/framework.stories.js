@@ -1,6 +1,6 @@
 import framework from './framework'
 import { action } from '@storybook/addon-actions'
-import { withKnobs, text } from '@storybook/addon-knobs'
+import { withKnobs, text, number } from '@storybook/addon-knobs'
 
 const methods = {
   onChange: action('onChange')
@@ -17,29 +17,31 @@ export const defaultViewFramework = () => ({
     framework
   },
   props: {
-    title: {
-      default: text('Framework', 'React.js')
+    frameworkName: {
+      default: text('Framework', 'React.js', 'Framework')
     },
-    span: {
-      default: text('First Word', 'JavaScript')
+    frameworkSpan: {
+      default: text('First Word', 'JavaScript', 'Framework')
     },
-    description: {
-      default: text('Description', 'framework for building interactive web applications ⚡')
+    frameworkDesc: {
+      default: text('Description',
+        'framework for building interactive web applications ⚡',
+        'Framework')
     },
     stars: {
-      default: text('Stars', '300')
+      default: number('Stars', 300, 'Framework')
     },
     forks: {
-      default: text('Forks', '10')
+      default: number('Forks', 10, 'Framework')
     }
   },
   template: `
     <framework
-      :title="title"
-      :desc="description"
+      :title="frameworkName"
+      :desc="frameworkDesc"
       :stars="stars"
       :forks="forks"
-      :span="span"
+      :span="frameworkSpan"
       @change="onChange"
     />
   `,

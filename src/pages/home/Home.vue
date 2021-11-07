@@ -11,15 +11,15 @@
   </header>
 
   <main>
-    <posts :names="names" :random="random" :months="months"/>
+    <posts :random="random" :months="months"/>
   </main>
 </template>
 
 <script>
-import topMenu from '@/components/menu/menu'
-import top from '@/components/header/header'
-import stories from '@/components/stories/stories'
-import posts from '@/components/posts/posts'
+import topMenu from '../../components/menu/menu'
+import top from '../../components/header/header'
+import stories from '../../components/stories/stories'
+import posts from '../../components/posts/posts'
 
 export default {
   name: 'Home',

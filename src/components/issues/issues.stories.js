@@ -1,6 +1,7 @@
 import issues from './issues'
 import { action } from '@storybook/addon-actions'
 import { withKnobs, text, number } from '@storybook/addon-knobs'
+import { optionsIssues } from '../globalProperties'
 
 const methods = {
   onChange: action('onChange')
@@ -24,7 +25,7 @@ export const defaultViewIssues = () => ({
       default: text('Issue', 'transition-group with flex parent causes removed items to fly')
     },
     num: {
-      default: number('Number', 3)
+      default: number('Number', 3, optionsIssues)
     }
   },
   template: `

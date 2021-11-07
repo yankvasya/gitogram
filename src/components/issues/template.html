@@ -6,7 +6,7 @@
 
     <ul class="issues__content" v-if="isShow">
         <li v-for="n in num" class="issue" :key="n">
-            <h4 class="issue__username">{{username}}</h4>
+            <div class="issue__username">{{username}}</div>
             <div class="issue__desc">{{issue}}</div>
         </li>
     </ul>

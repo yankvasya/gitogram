@@ -7,8 +7,8 @@ export default {
     title: String,
     span: String,
     desc: String,
-    stars: String,
-    forks: String
+    stars: Number,
+    forks: Number
   }
 }
 </script>
