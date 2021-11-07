@@ -1,11 +1,11 @@
 <div class="x-container">
     <ul class="stories">
-        <li v-for="n in 10" class="story new">
+        <li v-for="n in numStories" class="story new" :key="n">
             <a href="#" class="story__link">
                 <div class="story__img-box">
-                    <icon :name="`avatar${random(names.length) +1}`" class="story__img"/>
+                    <icon :name="`avatar${1}`" class="story__img"/>
                 </div>
-                <h3 class="story__name">{{names[random(names.length)]}}</h3>
+                <h3 class="story__name">{{username}}</h3>
             </a>
         </li>
     </ul>

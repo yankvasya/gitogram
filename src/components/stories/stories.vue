@@ -1,13 +1,14 @@
 <template src="./template.html" />
 
 <script>
-import icon from '@/icons/icon'
+import icon from '../../icons/icon'
 
 export default {
   name: 'stories',
   props: {
-    names: Array,
-    random: Function
+    username: String,
+    random: Function,
+    numStories: Number
   },
   components: {
     icon
