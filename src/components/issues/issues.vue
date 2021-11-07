@@ -17,7 +17,6 @@ export default {
   data () {
     return {
       isShow: true
-      // num: 3
     }
   }
 }

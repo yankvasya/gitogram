@@ -5,6 +5,7 @@ export default {
   name: 'framework',
   props: {
     title: String,
+    span: String,
     desc: String,
     stars: String,
     forks: String

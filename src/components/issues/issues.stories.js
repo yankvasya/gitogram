@@ -24,7 +24,7 @@ export const defaultViewIssues = () => ({
       default: text('Issue', 'transition-group with flex parent causes removed items to fly')
     },
     num: {
-      default: number('Number', 35)
+      default: number('Number', 3)
     }
   },
   template: `

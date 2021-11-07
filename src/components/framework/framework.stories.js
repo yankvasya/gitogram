@@ -18,10 +18,13 @@ export const defaultViewFramework = () => ({
   },
   props: {
     title: {
-      default: text('Framework Name', 'React.js')
+      default: text('Framework', 'React.js')
+    },
+    span: {
+      default: text('First Word', 'JavaScript')
     },
     description: {
-      default: text('Description', '<span>JavaScript</span> framework for building interactive web applications ⚡')
+      default: text('Description', 'framework for building interactive web applications ⚡')
     },
     stars: {
       default: text('Stars', '300')
@@ -36,6 +39,7 @@ export const defaultViewFramework = () => ({
       :desc="description"
       :stars="stars"
       :forks="forks"
+      :span="span"
       @change="onChange"
     />
   `,

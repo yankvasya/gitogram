@@ -1,5 +1,6 @@
 export { default as home } from './home'
 export { default as logout } from './logout'
+export { default as logo } from './logo'
 export { default as avatar1 } from './avatars/avatar1'
 export { default as avatar2 } from './avatars/avatar2'
 export { default as avatar3 } from './avatars/avatar3'
