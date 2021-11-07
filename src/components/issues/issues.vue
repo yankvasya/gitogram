@@ -6,7 +6,7 @@ export default {
   props: {
     username: String,
     issue: String,
-    num: String
+    num: Number
   },
   methods: {
     hideShow () {

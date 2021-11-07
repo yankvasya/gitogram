@@ -29,7 +29,6 @@ export const defaultViewAvatar = () => ({
   },
   template: `
     <avatar
-      @change="onChange"
       :title="title"
       src="https://cdn.pixabay.com/photo/2021/01/24/19/05/crane-5946169_960_720.jpg"
       alt="image"
@@ -49,7 +48,6 @@ export const activeViewAvatar = () => ({
   },
   template: `
     <avatar
-      @change="onChange"
       :title="title"
       src="https://cdn.pixabay.com/photo/2021/01/24/19/05/crane-5946169_960_720.jpg"
       alt="image"
