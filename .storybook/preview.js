@@ -9,11 +9,15 @@ export const parameters = {
       }
   },
   backgrounds: {
-    default: 'grey',
+    default: 'super-black',
     values: [
       {
         name: 'grey',
         value: '#FAFAFA',
+      },
+      {
+        name: 'super-black',
+        value: 'linear-gradient(0deg, #101010, #101010)',
       },
       {
         name: 'twitter',
