@@ -11,11 +11,19 @@ export default {
   components: {
     xButton
   },
-  decorators: [withKnobs]
+  decorators: [withKnobs],
+  argTypes: {
+    control: { type: 'text' }
+  }
 }
 
-export const defaultViewButton = () => ({
+export const defaultViewButton = (args) => ({
   components: { xButton },
+  data () {
+    return {
+      args
+    }
+  },
   props: {
     defaultText: {
       default: text('Default text', 'Follow')
@@ -26,11 +34,15 @@ export const defaultViewButton = () => ({
   },
   template: `
     <x-button
-      :default-text="defaultText"
-      :hover-text="hoverText"
+      v-bind="args"
     />
   `
 })
+
+defaultViewButton.args = {
+  defaultText: 'Follow',
+  hoverText: 'Unfollow'
+}
 
 defaultViewButton.story = {
   name: 'Стандартный вид'

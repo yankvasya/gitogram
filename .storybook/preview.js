@@ -9,8 +9,12 @@ export const parameters = {
       }
   },
   backgrounds: {
-    default: 'twitter',
+    default: 'grey',
     values: [
+      {
+        name: 'grey',
+        value: '#FAFAFA',
+      },
       {
         name: 'twitter',
         value: '#00aced',
