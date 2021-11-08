@@ -5,13 +5,13 @@
         <topMenu />
       </template>
       <template #stories>
-        <stories :names="names" :random="random"/>
+        <stories username="friend" :num-stories="10"/>
       </template>
     </top>
   </header>
 
   <main>
-    <posts :random="random" :months="months"/>
+    <posts />
   </main>
 </template>
 
@@ -20,6 +20,8 @@ import topMenu from '../../components/menu/menu'
 import top from '../../components/header/header'
 import stories from '../../components/stories/stories'
 import posts from '../../components/posts/posts'
+
+import * as api from '../../api'
 
 export default {
   name: 'Home',
@@ -39,6 +41,9 @@ export default {
       names: ['Josh', 'Andrew', 'Camille', 'Marcelle', 'Piter', 'Can', 'Iloveanime', 'Diself', 'Gartor', 'Camil'],
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     }
+  },
+  created () {
+    api.trandings.getTrendings()
   }
 }
 </script>
