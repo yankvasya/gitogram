@@ -7,7 +7,7 @@ import { withKnobs, text } from '@storybook/addon-knobs'
 // }
 
 export default {
-  title: 'x-button',
+  title: 'button',
   components: {
     xButton
   },
