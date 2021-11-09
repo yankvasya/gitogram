@@ -1,8 +1,8 @@
 <div class="container">
     <ul class="posts">
-        <li class="post" v-for="n in postsCount" :key="n">
+        <li class="post">
             <div class="post__author">
-                <icon :name="'avatar'+ numImg" class="post__img"/>
+                <img :src="postImg" alt="avatar" class="post__img">
                 <h3 class="post__nickname">{{username}}</h3>
             </div>
 

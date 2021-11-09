@@ -11,7 +11,21 @@
   </header>
 
   <main>
-    <posts />
+    <post
+      :posts-count="items"
+      :username="items[0].owner.login"
+      :framework-name="items[0].name"
+      :framework-span="items[0].description.split(' ')[0]"
+      :framework-desc="items[0].description.substring(items[0].description.indexOf(' ') + 1)"
+      :post-img="items[0].owner.avatar_url"
+      :stars="items[0].stargazers_count"
+      :forks="items[0].forks"
+      :issues-num="issuesNum"
+      :issue="issue"
+      month="Jan"
+      :num-month="1"
+    />
+    <pre>{{items[0]}}</pre>
   </main>
 </template>
 
@@ -19,7 +33,7 @@
 import topMenu from '../../components/menu/menu'
 import top from '../../components/header/header'
 import stories from '../../components/stories/stories'
-import posts from '../../components/posts/posts'
+import post from '../../components/posts/posts'
 
 import * as api from '../../api'
 
@@ -29,7 +43,7 @@ export default {
     top,
     topMenu,
     stories,
-    posts
+    post
   },
   methods: {
     random (n) {
@@ -39,11 +53,18 @@ export default {
   data () {
     return {
       names: ['Josh', 'Andrew', 'Camille', 'Marcelle', 'Piter', 'Can', 'Iloveanime', 'Diself', 'Gartor', 'Camil'],
-      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      items: []
     }
   },
-  created () {
-    api.trandings.getTrendings()
+  async created () {
+    try {
+      const { data } = await api.trandings.getTrendings()
+
+      this.items = data.items
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 </script>

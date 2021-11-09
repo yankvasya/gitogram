@@ -9,8 +9,7 @@ export default {
   name: 'posts',
   props: {
     username: String,
-    numImg: Number,
-    postsCount: Number,
+    postImg: String,
     frameworkName: String,
     frameworkDesc: String,
     frameworkSpan: String,

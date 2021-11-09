@@ -21,11 +21,8 @@ export const defaultViewPosts = () => ({
     username: {
       default: text('Username', 'Username', 'Top line')
     },
-    numImg: {
-      default: number('Image №', 1, optionsImg, 'Top line')
-    },
-    countPosts: {
-      default: number('Count of Posts', 1)
+    postImg: {
+      default: text('Image №', 'https://avatars.githubusercontent.com/u/10028428?v=4', 'Top line')
     },
     frameworkName: {
       default: text('Framework', 'React.js', 'Framework')
@@ -58,12 +55,10 @@ export const defaultViewPosts = () => ({
   template: `
     <posts
       :username="username"
-      :posts-count="countPosts"
       :framework-name="frameworkName"
       :framework-span="frameworkSpan"
       :framework-desc="frameworkDesc"
-      :num-img="numImg"
-      :title="frameworkName"
+      :post-img="postImg"
       :stars="stars"
       :forks="forks"
       :issues-num="issuesNum"
