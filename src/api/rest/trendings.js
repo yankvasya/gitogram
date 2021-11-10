@@ -26,5 +26,7 @@ export const getTrendings = (lang = 'javascript') => {
 // https://api.github.com/repos/bradtraversy/website-accessibility-tester/issues
 
 export const getIssues = (url) => {
-
+  return makeRequest({
+    url: 'repos/bradtraversy/website-accessibility-tester/issues'
+  })
 }

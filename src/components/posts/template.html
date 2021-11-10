@@ -1,27 +1,23 @@
-<div class="container">
-    <ul class="posts">
-        <li class="post">
-            <div class="post__author">
-                <img :src="postImg" alt="avatar" class="post__img">
-                <h3 class="post__nickname">{{username}}</h3>
-            </div>
+<li class="post">
+    <div class="post__author">
+        <img :src="postImg" alt="avatar" class="post__img">
+        <h3 class="post__nickname">{{username}}</h3>
+    </div>
 
-            <framework
-                    :title="frameworkName"
-                    :span="frameworkSpan"
-                    :desc="frameworkDesc"
-                    :stars="stars"
-                    :forks="forks"
-                    @change="onChange"
-            />
+    <framework
+            :title="frameworkName"
+            :span="frameworkSpan"
+            :desc="frameworkDesc"
+            :stars="stars"
+            :forks="forks"
+            @change="onChange"
+    />
 
-            <issues
-                    :username="username"
-                    :num="issuesNum"
-                    :issue="issue"
-            />
+    <issues
+            :username="username"
+            :num="issuesNum"
+            :issue="issue"
+    />
 
-            <time class="post__date">{{numMonth}} {{month}}</time>
-        </li>
-    </ul>
-</div>
+    <time class="post__date">{{numMonth}} {{month}}</time>
+</li>

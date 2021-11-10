@@ -8,7 +8,7 @@ const methods = {
 }
 
 export default {
-  title: 'posts',
+  title: 'post',
   components: { posts },
   decorators: [withKnobs]
 }
@@ -53,20 +53,22 @@ export const defaultViewPosts = () => ({
     }
   },
   template: `
-    <posts
-      :username="username"
-      :framework-name="frameworkName"
-      :framework-span="frameworkSpan"
-      :framework-desc="frameworkDesc"
-      :post-img="postImg"
-      :stars="stars"
-      :forks="forks"
-      :issues-num="issuesNum"
-      :issue="issue"
-      :month="months"
-      :num-month="countMonth"
-      @change="onChange"
-    />
+    <ul>
+      <posts
+        :username="username"
+        :framework-name="frameworkName"
+        :framework-span="frameworkSpan"
+        :framework-desc="frameworkDesc"
+        :post-img="postImg"
+        :stars="stars"
+        :forks="forks"
+        :issues-num="issuesNum"
+        :issue="issue"
+        :month="months"
+        :num-month="countMonth"
+        @change="onChange"
+      />
+    </ul>
   `,
   methods
 })
