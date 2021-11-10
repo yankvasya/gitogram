@@ -1,7 +1,7 @@
 import posts from './posts'
 import { action } from '@storybook/addon-actions'
 import { withKnobs, text, number, select } from '@storybook/addon-knobs'
-import { allMonths, optionsImg, optionsIssues, optionsMonth } from '../globalProperties'
+import { allMonths, optionsIssues, optionsMonth } from '../globalProperties'
 
 const methods = {
   onChange: action('onChange')

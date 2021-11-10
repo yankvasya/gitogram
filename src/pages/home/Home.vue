@@ -11,21 +11,21 @@
   </header>
 
   <main>
-    <post
+    <posts
       :posts-count="items"
-      :username="items[0].owner.login"
-      :framework-name="items[0].name"
-      :framework-span="items[0].description.split(' ')[0]"
-      :framework-desc="items[0].description.substring(items[0].description.indexOf(' ') + 1)"
-      :post-img="items[0].owner.avatar_url"
+      :username="items[1].owner?.login"
+      :framework-name="items[1].name"
+      :framework-span="items[1].description?.split(' ')[0]"
+      :framework-desc="items[1].description?.substring(items[1].description.indexOf(' ') + 1)"
+      :post-img="items[0].owner?.avatar_url"
       :stars="items[0].stargazers_count"
       :forks="items[0].forks"
-      :issues-num="issuesNum"
+      :issues-num="items[0].open_issues_count"
       :issue="issue"
-      month="Jan"
-      :num-month="1"
+      :month="months[items[0].updated_at.slice(5,7) -1]"
+      :num-month="items[0].updated_at.slice(0,2)"
     />
-    <pre>{{items[0]}}</pre>
+    <pre>{{items[1]}}</pre>
   </main>
 </template>
 
@@ -33,7 +33,7 @@
 import topMenu from '../../components/menu/menu'
 import top from '../../components/header/header'
 import stories from '../../components/stories/stories'
-import post from '../../components/posts/posts'
+import posts from '../../components/posts/posts'
 
 import * as api from '../../api'
 
@@ -43,7 +43,7 @@ export default {
     top,
     topMenu,
     stories,
-    post
+    posts
   },
   methods: {
     random (n) {
@@ -52,7 +52,6 @@ export default {
   },
   data () {
     return {
-      names: ['Josh', 'Andrew', 'Camille', 'Marcelle', 'Piter', 'Can', 'Iloveanime', 'Diself', 'Gartor', 'Camil'],
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       items: []
     }

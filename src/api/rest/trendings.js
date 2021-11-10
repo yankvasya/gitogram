@@ -22,3 +22,9 @@ export const getTrendings = (lang = 'javascript') => {
     url: `/search/repositories?${params}`
   })
 }
+
+// https://api.github.com/repos/bradtraversy/website-accessibility-tester/issues
+
+export const getIssues = (url) => {
+
+}
