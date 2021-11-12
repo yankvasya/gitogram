@@ -5,9 +5,10 @@
     </a>
 
     <ul class="issues__content" v-if="isShow">
-        <li v-for="n in num" class="issue" :key="n">
-            <div class="issue__username">{{username}}</div>
-            <div class="issue__desc">{{issue}}</div>
-        </li>
+        <issue
+            v-for="n in 3"
+            :key="n.toString()"
+            :username="n.toString()"
+        />
     </ul>
 </div>

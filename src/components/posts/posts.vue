@@ -1,7 +1,6 @@
 <template src="./template.html" />
 
 <script>
-import icon from '../../icons/icon'
 import framework from '../../components/framework/framework'
 import issues from '../../components/issues/issues'
 
@@ -16,6 +15,7 @@ export default {
     stars: Number,
     forks: Number,
     issuesNum: Number,
+    issueUsername: String,
     issue: String,
     month: String,
     numMonth: String,
@@ -33,7 +33,6 @@ export default {
     }
   },
   components: {
-    icon,
     framework,
     issues
   }

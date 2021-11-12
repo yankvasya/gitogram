@@ -14,9 +14,11 @@
     />
 
     <issues
-            :username="username"
+            v-if="issuesNum > 0"
+            :username="issueUsername"
             :num="issuesNum"
             :issue="issue"
+            :issue-username="123"
     />
 
     <time class="post__date">{{numMonth}} {{month}}</time>

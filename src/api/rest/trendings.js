@@ -27,6 +27,6 @@ export const getTrendings = (lang = 'javascript') => {
 
 export const getIssues = (url) => {
   return makeRequest({
-    url: 'repos/bradtraversy/website-accessibility-tester/issues'
+    url: `${url}`
   })
 }

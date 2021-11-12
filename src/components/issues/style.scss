@@ -4,23 +4,6 @@
   &__content {
     margin-top: 10px;
   }
-
-  .issue {
-    display: flex;
-
-    &__username {
-      margin-right: 8px;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 14px;
-      line-height: 22px;
-      color: #262626;
-    }
-
-    &:not(:last-child) {
-      margin-bottom: 6px;
-    }
-  }
 }
 
 .toggler {

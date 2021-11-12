@@ -45,6 +45,9 @@ export const defaultViewPosts = () => ({
     countMonth: {
       default: number('Day', 1, optionsMonth, 'Date')
     },
+    issueUsername: {
+      default: text('Issue Username', 'Test username', 'Issues')
+    },
     issuesNum: {
       default: number('Issues Count', 3, optionsIssues, 'Issues')
     },
@@ -66,6 +69,7 @@ export const defaultViewPosts = () => ({
         :issue="issue"
         :month="months"
         :num-month="countMonth"
+        :issue-username="issueUsername"
         @change="onChange"
       />
     </ul>

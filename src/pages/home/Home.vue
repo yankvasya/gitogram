@@ -24,7 +24,6 @@
           :stars="n.stargazers_count"
           :forks="n.forks"
           :issues-num="n.open_issues_count"
-          :issue="issue"
           :month="months[n.created_at.slice(5,7) - 1]"
           :num-month="n.created_at.slice(8,10)"
         />
@@ -60,18 +59,13 @@ export default {
   data () {
     return {
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      items: [],
-      issues: {}
+      items: []
     }
   },
   async created () {
     try {
       const { data } = await api.trandings.getTrendings()
-      const tempIssues = await api.trandings.getIssues()
-      // const { url } = tempIssues.data
       this.items = data.items
-
-      console.log(tempIssues.data)
     } catch (e) {
       console.log(e)
     }
