@@ -26,10 +26,10 @@
           :issues-num="n.open_issues_count"
           :month="months[n.created_at.slice(5,7) - 1]"
           :num-month="n.created_at.slice(8,10)"
-        />
+        >
+        </post>
       </template>
     </posts-container>
-    <pre v-for="n of items" :key="n">{{n}}</pre>
   </main>
 </template>
 
@@ -51,21 +51,22 @@ export default {
     post,
     postsContainer
   },
-  methods: {
-    random (n) {
-      return Math.floor(Math.random() * n)
-    }
-  },
   data () {
     return {
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      items: []
+      items: [],
+      issues: []
     }
   },
   async created () {
     try {
       const { data } = await api.trandings.getTrendings()
       this.items = data.items
+
+      for (const el of this.items) {
+        const i = this.items.indexOf(el)
+        this.issues[i] = (await api.trandings.getIssues(el.issues_url.split('{/number}').join(''))).data
+      }
     } catch (e) {
       console.log(e)
     }

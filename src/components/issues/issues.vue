@@ -7,7 +7,7 @@ import * as api from '../../api'
 export default {
   name: 'issues',
   props: {
-    username: String,
+    frameworkName: String,
     issue: String,
     num: Number
   },
@@ -17,15 +17,13 @@ export default {
       this.$emit('change', `${!this.isShow ? 'Hide' : 'Show'}`)
     },
     async returnData (item) {
-      const info = item.data
-      console.log(item.data)
-      // const { data } = item
-      return info
+      return item.data
     }
   },
   data () {
     return {
       isShow: true,
+      items: [],
       issues: []
     }
   },
@@ -34,10 +32,13 @@ export default {
   },
   async created () {
     try {
-      // eslint-disable-next-line camelcase
-      const { data: { comments_url } } = await api.trandings.getIssues('/repos/bradtraversy/website-accessibility-tester/issues/1')
-      this.issues = await this.returnData(await api.trandings.getIssues(comments_url))
-      // const comments = await api.trandings.getIssues(data[0].url)
+      const { data } = await api.trandings.getTrendings()
+      this.items = data.items
+
+      for (const el of this.items) {
+        const i = this.items.indexOf(el)
+        this.issues[i] = (await api.trandings.getIssues(el.issues_url.split('{/number}').join(''))).data
+      }
 
       console.log(this.issues)
     } catch (e) {
