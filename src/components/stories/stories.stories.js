@@ -1,6 +1,6 @@
 import stories from './stories'
 import { action } from '@storybook/addon-actions'
-import { withKnobs, text, number } from '@storybook/addon-knobs'
+import { withKnobs, text } from '@storybook/addon-knobs'
 
 const methods = {
   onChange: action('onChange')
@@ -18,17 +18,23 @@ export const defaultViewStories = () => ({
   },
   props: {
     username: {
-      default: text('Username', 'Username')
+      default: text('Username', 'test-name')
     },
-    numStories: {
-      default: number('Stories Count', 1)
+    storiesImgSrc: {
+      default: text('Image Src', 'https://avatars.githubusercontent.com/u/66585732?v=4')
     }
   },
   template: `
-    <stories
-      :username="username"
-      :num-stories="numStories"
-    />
+    <div class="d-flex justify-center">
+      <ul class="x-container stories d-flex">
+        <stories
+          v-for="n in 10"
+          :key="n"
+          :username="username"
+          :stories-img="storiesImgSrc"
+        />
+      </ul>
+    </div>
   `,
   methods
 })

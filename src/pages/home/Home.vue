@@ -5,7 +5,7 @@
         <topMenu />
       </template>
       <template #stories>
-        <stories username="friend" :num-stories="10"/>
+        <stories v-for="n in items" :username="n.owner?.login" :key="n" :stories-img="n.owner?.avatar_url"/>
       </template>
     </top>
   </header>
@@ -25,7 +25,7 @@
           :forks="n.forks"
           :issues-num="n.open_issues_count"
           :issue="issue"
-          :month="months[n.created_at.slice(5,7) -1]"
+          :month="months[n.created_at.slice(5,7) - 1]"
           :num-month="n.created_at.slice(8,10)"
         />
       </template>

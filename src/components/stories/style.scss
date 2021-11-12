@@ -1,72 +1,72 @@
 .stories {
   display: flex;
-  width: 100%;
-  margin: 43.5px 0 33px;
+  background: red;
+}
 
-  .story {
+.story {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-right: 31px;
+  }
+
+  &__link {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+  }
 
-    &:not(:last-child) {
-      margin-right: 31px;
-    }
+  &__img {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    z-index: 3;
+  }
 
-    &__link {
+  &.new {
+    .story__img-box {
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-    }
-
-    &__img {
+      align-items: center;
+      width: 92px;
+      height: 92px;
       position: relative;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      z-index: 3;
-    }
 
-    &.new {
-      .story__img-box {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 92px;
-        height: 92px;
-        position: relative;
-        
 
+      &:before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        border: 2px solid #A6328D;
+        border-radius: 50%;
+
+        transition: width .2s, height .2s;
+      }
+
+      &:hover {
         &:before {
-          content: "";
-          position: absolute;
-          z-index: 0;
-          width: 100%;
-          height: 100%;
-          border: 2px solid #A6328D;
-          border-radius: 50%;
+          width: 92%;
+          height: 92%;
 
-          transition: width .2s, height .2s;
-        }
-        
-        &:hover {
-          &:before {
-            width: 92%;
-            height: 92%;
-
-            transition: all .2s;
-          }
+          transition: all .2s;
         }
       }
     }
+  }
 
-    &__name {
-      margin-top: 16px;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 12px;
-      line-height: 10px;
-      color: #000000;
-    }
+  &__name {
+    margin-top: 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 10px;
+    color: #000000;
   }
 }
+

@@ -1,12 +1,8 @@
-<div class="x-container">
-    <ul class="stories">
-        <li v-for="n in numStories" class="story new" :key="n">
-            <a href="#" class="story__link">
-                <div class="story__img-box">
-                    <icon :name="`avatar${1}`" class="story__img"/>
-                </div>
-                <h3 class="story__name">{{username}}</h3>
-            </a>
-        </li>
-    </ul>
-</div>
+<li class="story new">
+    <a href="#" class="story__link">
+        <div class="story__img-box">
+            <img :src="storiesImg" :alt="username + ' github'" class="story__img">
+        </div>
+        <h3 class="story__name">{{username}}</h3>
+    </a>
+</li>
