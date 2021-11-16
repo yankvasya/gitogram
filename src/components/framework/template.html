@@ -1,21 +1,21 @@
 <div class="framework">
-    <h2 class="framework__name">{{frameworks[random(3)]}}</h2>
-    <h4 class="framework__desc" v-html="desc[random(3)]"></h4>
+    <h2 class="framework__name">{{title}}</h2>
+    <div class="framework__desc"><span>{{span}}</span> {{desc}}</div>
 
     <div class="utils">
         <div class="util star">
-            <a href="#" class="util__name">
-                <img src="../../assets/icons/star.svg" alt="star" class="util__icon">
-                <h5 class="util__title">Star</h5>
+            <a href="#" class="util__name" @click.prevent="$emit('change', 'star')">
+                <img src="../../assets/icons/star.svg" alt="star icon" class="util__icon">
+                <div class="util__title">Star</div>
             </a>
-            <div class="util__num">{{random(300)}}k</div>
+            <div class="util__num">{{stars}}</div>
         </div>
         <div class="util fork">
-            <a href="#" class="util__name">
-                <img src="../../assets/icons/fork.svg" alt="fork" class="util__icon">
-                <h5 class="util__title">Fork</h5>
+            <a href="#" class="util__name" @click.prevent="$emit('change', 'fork')">
+                <img src="../../assets/icons/fork.svg" alt="fork icon" class="util__icon">
+                <div class="util__title">Fork</div>
             </a>
-            <div class="util__num">{{random(20)}}</div>
+            <div class="util__num">{{forks}}</div>
         </div>
     </div>
 </div>

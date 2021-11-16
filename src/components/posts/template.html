@@ -1,16 +1,25 @@
-<div class="container">
-    <ul class="posts">
-        <li class="post" v-for="n in names.length" :key="n">
-            <div class="post__author">
-                <icon :name="'avatar'+ (forever(names.length) + 1)" class="post__img"/>
-                <h3 class="post__nickname">{{names[num]}}</h3>
-            </div>
+<li class="post">
+    <div class="post__author">
+        <img :src="postImg" alt="avatar" class="post__img">
+        <h3 class="post__nickname">{{username}}</h3>
+    </div>
 
-            <framework :random="random"/>
+    <framework
+            :title="frameworkName"
+            :span="frameworkSpan"
+            :desc="frameworkDesc"
+            :stars="stars"
+            :forks="forks"
+            @change="onChange"
+    />
 
-            <issues :names="names" :random="random"/>
+    <issues
+            v-if="issuesNum > 0"
+            :num="issuesNum"
+            :issue="issue"
+            :framework-name="frameworkName"
+            :issue-username="123"
+    />
 
-            <time class="post__date">{{`${random(28) + 1} ${months[random(months.length-1)]}`}}</time>
-        </li>
-    </ul>
-</div>
+    <time class="post__date">{{numMonth}} {{month}}</time>
+</li>

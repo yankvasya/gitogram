@@ -1,0 +1,9 @@
+<div class="avatar-component">
+    <div :class="['image', {'bordered': active}]">
+        <img
+                v-bind="$attrs"
+                class="img"
+        >
+    </div>
+    <div class="avatar-component__username">{{title}}</div>
+</div>

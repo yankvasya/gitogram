@@ -1,16 +1,25 @@
 <template src="./template.html" />
 
 <script>
-import icon from '@/icons/icon'
-import framework from '@/components/framework/framework'
-import issues from '@/components/issues/issues'
+import framework from '../../components/framework/framework'
+import issues from '../../components/issues/issues'
 
 export default {
   name: 'posts',
   props: {
-    names: Array,
-    random: Function,
-    months: Array
+    username: String,
+    postImg: String,
+    frameworkName: String,
+    frameworkDesc: String,
+    frameworkSpan: String,
+    stars: Number,
+    forks: Number,
+    issuesNum: Number,
+    issueUsername: String,
+    issue: String,
+    month: String,
+    numMonth: String,
+    onChange: Function
   },
   data () {
     return {
@@ -24,7 +33,6 @@ export default {
     }
   },
   components: {
-    icon,
     framework,
     issues
   }

@@ -1,24 +1,48 @@
 <template src="./template.html" />
 
 <script>
+import issue from '../../components/issue/issue'
+import * as api from '../../api'
+
 export default {
   name: 'issues',
   props: {
-    names: Array,
-    random: Function
+    frameworkName: String,
+    issue: String,
+    num: Number
   },
   methods: {
     hideShow () {
       this.isShow = !this.isShow
+      this.$emit('change', `${!this.isShow ? 'Hide' : 'Show'}`)
+    },
+    async returnData (item) {
+      return item.data
     }
   },
   data () {
     return {
-      isShow: false,
-      issue: ['Enable performance measuring in production, at the user\'s request',
-        'It\'s Impossible to Rename an Inherited Slot',
-        'transition-group with flex parent causes removed items to fly'
-      ]
+      isShow: true,
+      items: [],
+      issues: []
+    }
+  },
+  components: {
+    issue
+  },
+  async created () {
+    try {
+      const { data } = await api.trandings.getTrendings()
+      this.items = data.items
+
+      for (const el of this.items) {
+        const i = this.items.indexOf(el)
+        this.issues[i] = (await api.trandings.getIssues(el.issues_url.split('{/number}').join(''))).data
+      }
+
+      console.log(this.issues)
+    } catch (e) {
+      console.log(e)
     }
   }
 }
