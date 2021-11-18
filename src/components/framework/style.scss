@@ -49,7 +49,7 @@
         &:hover {
           background: #eeebeb;
           box-shadow: inset 1px -1px 0px rgba(27, 31, 35, 0.12), inset 0px 1px 0px rgba(27, 31, 35, 0.12),
-          1px 1px 3px rgba(27,31,35, .5);
+          .5px 1px 5px rgba(27,31,35, .5);
 
           transition: all .5s;
         }
@@ -67,6 +67,7 @@
         width: 16px;
         height: 16px;
         margin-right: 4px;
+        color: #586069;
       }
 
       &__num {
@@ -97,6 +98,12 @@
           font-style: normal;
           font-weight: 600;
           font-size: 12px;
+        }
+      }
+
+      &:hover {
+        .util__icon {
+          color: #31AE54;
         }
       }
     }

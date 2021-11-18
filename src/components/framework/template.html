@@ -5,14 +5,18 @@
     <div class="utils">
         <div class="util star">
             <a href="#" class="util__name" @click.prevent="$emit('change', 'star')">
-                <img src="../../assets/icons/star.svg" alt="star icon" class="util__icon">
+                <div class="util__icon">
+                    <icon name="fork" />
+                </div>
                 <div class="util__title">Star</div>
             </a>
             <div class="util__num">{{stars}}</div>
         </div>
         <div class="util fork">
             <a href="#" class="util__name" @click.prevent="$emit('change', 'fork')">
-                <img src="../../assets/icons/fork.svg" alt="fork icon" class="util__icon">
+                <div class="util__icon">
+                    <icon name="fork" />
+                </div>
                 <div class="util__title">Fork</div>
             </a>
             <div class="util__num">{{forks}}</div>

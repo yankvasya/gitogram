@@ -39,8 +39,6 @@ export default {
         const i = this.items.indexOf(el)
         this.issues[i] = (await api.trandings.getIssues(el.issues_url.split('{/number}').join(''))).data
       }
-
-      console.log(this.issues)
     } catch (e) {
       console.log(e)
     }
