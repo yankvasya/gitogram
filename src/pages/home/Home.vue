@@ -15,7 +15,7 @@
       <template #post>
         <post
           v-for="n in items"
-          :key="n"
+          :key="n.id"
           :username="n.owner?.login"
           :post-img="n.owner?.avatar_url"
           :framework-name="n.name"
