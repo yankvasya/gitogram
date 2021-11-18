@@ -1,6 +1,6 @@
 <div class="story">
     <div class="story__header">
-<!--        <progress-line></progress-line>-->
+        <progress-line />
         <avatar
             :title="titleStory"
             src="https://cdn.pixabay.com/photo/2021/01/24/19/05/crane-5946169_960_720.jpg"
@@ -15,8 +15,6 @@
         </p>
     </div>
     <div class="story__footer">
-<!--        <x-button :defaultText="defaultText" :hoverText="hoverText" ></x-button>-->
-        <slot :defaultText="defaultText" :hoverText="hoverText"></slot>
-<!--        <button>Button</button>-->
+        <x-button :defaultText="defaultText" :hoverText="hoverText" ></x-button>
     </div>
 </div>

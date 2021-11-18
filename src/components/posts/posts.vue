@@ -18,7 +18,7 @@ export default {
     issueUsername: String,
     issue: String,
     month: String,
-    numMonth: String,
+    numMonth: Number,
     onChange: Function
   },
   data () {

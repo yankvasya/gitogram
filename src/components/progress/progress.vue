@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'progress',
+  name: 'timeline',
   data () {
     return {
       active: false
@@ -31,4 +31,4 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./style.scss" scoped></style>
+<style lang="scss" src="./style.scss" scoped />

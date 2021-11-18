@@ -1,5 +1,4 @@
 import fullStories from './fullStories'
-import button from '../button/button'
 
 export default {
   title: 'fullStories',
@@ -30,7 +29,7 @@ export default {
 }
 
 export const defaultViewFullStories = (args) => ({
-  components: { fullStories, xButton: { button } },
+  components: { fullStories },
   data () {
     return {
       args
@@ -39,13 +38,8 @@ export const defaultViewFullStories = (args) => ({
   template: `
     <full-stories
       v-bind="args"
-      :hover-text="args.hoverText"
-      :default-text="args.defaultText"
-    >
-      <template #default>
-        <x-button :hover-text="args.hoverText" :default-text="args.defaultText"></x-button>
-      </template>
-    </full-stories>
+      @onFinish="args.onFinish"
+    />
   `
 })
 

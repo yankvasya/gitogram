@@ -16,6 +16,10 @@ $storyFooterHeight: 100px;
     width: 100%;
     height: $storyHeaderHeight;
     border-bottom: 1px solid #CACACA;
+
+    .avatar-component {
+      margin-top: 12px;
+    }
   }
 
   &__desc {

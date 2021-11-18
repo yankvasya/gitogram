@@ -1,9 +1,9 @@
-import progress from './progress'
+import timeline from './progress'
 
 export default {
-  title: 'progress',
+  title: 'timeline',
   components: {
-    progress
+    timeline
   },
   argTypes: {
     onFinish: {
@@ -13,18 +13,20 @@ export default {
   }
 }
 
-export const defaultViewProgress = (args) => ({
-  components: { progressLine: progress },
+export const defaultViewProgressLine = (args) => ({
+  components: {
+    timeline
+  },
   data () {
     return {
       args
     }
   },
   template: `
-    <progress-line @onFinish="args.onFinish" />
+    <timeline @onFinish="args.onFinish" />
   `
 })
 
-defaultViewProgress.story = {
+defaultViewProgressLine.story = {
   name: 'Стандартный вид'
 }

@@ -1,9 +1,9 @@
 <template src="./template.html"/>
 
 <script>
-import progress from '../progress/progress'
+import progressLine from '../progress/progress'
 import avatar from '../avatar/avatar'
-import button from '../button/button'
+import xButton from '../button/button'
 
 export default {
   name: 'fullStories',
@@ -16,9 +16,9 @@ export default {
   },
   emits: ['onFinish'],
   components: {
-    progressLine: { progress },
+    progressLine,
     avatar,
-    xButton: { button }
+    xButton
   }
 }
 </script>
