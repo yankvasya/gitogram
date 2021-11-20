@@ -48,9 +48,6 @@
 
         &:hover {
           background: #eeebeb;
-          box-shadow: inset 1px -1px 0px rgba(27, 31, 35, 0.12), inset 0px 1px 0px rgba(27, 31, 35, 0.12),
-          .5px 1px 5px rgba(27,31,35, .5);
-
           transition: all .5s;
         }
       }
@@ -93,6 +90,10 @@
         }
       }
 
+      &.star {
+        z-index: 1;
+      }
+
       &.fork {
         .util__title, .util__num {
           font-style: normal;
@@ -105,6 +106,20 @@
         .util__icon {
           color: #31AE54;
         }
+      }
+    }
+    
+    .util:first-child {
+      .util__name:hover {
+        box-shadow: inset 1px -1px 0px rgba(27, 31, 35, 0.12), inset 0px 1px 0px rgba(27, 31, 35, 0.12),
+        .5px 1px 5px rgba(27,31,35, .5);
+      }
+    }
+
+    .util:not(:first-child) {
+      .util__name:hover {
+        box-shadow: inset 1px -1px 0px rgba(27, 31, 35, 0.12), inset 0px 1px 0px rgba(27, 31, 35, 0.12),
+        .5px 1px 5px rgba(27,31,35, .5),-1px 0px 1px white;
       }
     }
   }
