@@ -48,8 +48,6 @@ export default {
       try {
         const response = await fetch('https://randomuser.me/api')
         const data = await response.json()
-        console.log(data.results[0])
-
         commit('SET_USER_DATA', data.results[0])
       } catch (e) {
         commit('SET_USER_ERROR', 'Не удалось получить данные пользователя')
