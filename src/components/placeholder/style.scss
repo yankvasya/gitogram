@@ -1,0 +1,44 @@
+@keyframes shimmer {
+  from {
+    background: linear-gradient(270deg, #FFFFFF -100%, rgba(255, 255, 255, 0) 100%), #EAEAEA;
+  }
+  35% {
+    background: linear-gradient(270deg, #FFFFFF -100%, rgba(255, 255, 255, 0) 100%), #e1dcdc;
+  }
+  50% {
+    background: linear-gradient(270deg, #FFFFFF -100%, rgba(255, 255, 255, 0) 100%), #dcd7d7;
+  }
+  to {
+    background: linear-gradient(270deg, #FFFFFF -100%, rgba(255, 255, 255, 0) 100%), #EAEAEA;
+  }
+}
+
+.placeholders {
+  padding: 10px 0;
+
+  .placeholder {
+    border-radius: 4px;
+    height: 22px;
+    animation: shimmer 1s ease-in-out infinite;
+
+    &:hover {
+      cursor: wait;
+    }
+
+    &:first-child {
+      width: 504px;
+    }
+
+    &:nth-child(2) {
+      width: 298px;
+    }
+
+    &:last-child {
+      width: 216px;
+    }
+
+    &:not(:first-child) {
+      margin-top: 10px;
+    }
+  }
+}
