@@ -25,16 +25,9 @@ export default {
       commit('SET_REPO_LOADING', true)
       try {
         const { data } = await api.trandings.getTrendings()
-
-        // for (const el of data.items) {
-        //   const i = data.items.indexOf(el)
-        //   this.issues[i] = (await api.trandings.getIssues(el.issues_url.split('{/number}').join(''))).data
-        // }
-        console.log(data.items)
-
         commit('SET_REPO_DATA', data.items)
       } catch (e) {
-        commit('SET_REPO_ERROR', 'Не удалось получить данные пользователя')
+        commit('SET_REPO_ERROR', `Не удалось загрузить данные, ошибка: "${e}"`)
       } finally {
         commit('SET_REPO_LOADING', false)
       }

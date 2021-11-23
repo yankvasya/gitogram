@@ -11,11 +11,10 @@
   </header>
 
   <main>
-    <div v-if="repos.loading">loading repositories...</div>
-    <div v-else-if="repos.error">{{repos.error}}</div>
-<!--    <pre v-else-if="repos.data">{{repos.data}}</pre>-->
     <posts-container>
       <template #post>
+        <div v-if="repos.loading">loading repositories...</div>
+        <div v-else-if="repos.error">{{repos.error}}</div>
         <post
           v-for="n in repos.data"
           :key="n.id"
@@ -41,7 +40,7 @@ import top from '../../components/header/header'
 import stories from '../../components/stories/stories'
 import post from '../../components/posts/posts'
 import postsContainer from '../../components/postsContainer/postsContainer'
-import { mapState, mapActions, mapGetters } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Home',
@@ -54,30 +53,23 @@ export default {
   },
   data () {
     return {
-      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      issues: []
+      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     }
   },
   methods: {
     ...mapActions({
-      fetchRepositories: 'repositories/fetchRepositories'
+      fetchRepositories: 'repositories/fetchRepositories',
+      fetchIssues: 'issues/fetchIssues'
     })
   },
   computed: {
     ...mapState({
-      user: state => state.user.user,
-      foo: state => state.user.foo,
       repos: state => state.repositories
-    }),
-    // ~mapGetters('user', {}) <-- (if all data <-- 1 module.)
-    // ~('user',[getIfUserIfFemale,getMiddlePlus])
-    ...mapGetters({
-      // где user/ <-- модуль
-      // isMiddlePlus: 'user/getMiddlePlus'
     })
   },
   async created () {
     await this.fetchRepositories()
+    await this.fetchIssues(this.repos)
   }
 }
 </script>
