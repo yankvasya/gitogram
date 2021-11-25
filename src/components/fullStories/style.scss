@@ -1,5 +1,17 @@
 $storyHeaderHeight: 67px;
 $storyFooterHeight: 100px;
+$loading-speed: .8s;
+
+@keyframes spinner-loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 .story {
   max-width: 375px;
@@ -25,6 +37,21 @@ $storyFooterHeight: 100px;
   &__desc {
     overflow-y: auto;
     padding:0 15px 24px 18px;
+
+    .spinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+
+      & > svg {
+        color: #31AE54;
+        width: 62px;
+        height: 62px;
+
+        animation: spinner-loading linear $loading-speed infinite;
+      }
+    }
 
     span {
       font-weight: bold;

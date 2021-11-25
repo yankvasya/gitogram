@@ -24,6 +24,12 @@ export default {
     },
     hoverText: {
       control: { type: 'text' }
+    },
+    activeLine: {
+      control: { type: 'boolean' }
+    },
+    loadingSpinner: {
+      control: { type: 'boolean' }
     }
   }
 }
@@ -47,29 +53,31 @@ defaultViewFullStories.args = {
   boldText: 'The easiest',
   titleStory: 'React.reposit',
   defaultText: 'Follow',
-  hoverText: 'Unfollow'
-  // texts: ['way to get .NET 6 Preview 4 is to install the maui-check dotnet tool from CLI and follow the instructions.',
-  //   'For running on Mac you\'ll currently use your favorite text editor and terminal to edit and run apps.' +
-  //   ' We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.',
-  //   'In Preview 4 we enable push/pop navigation with NavigationPage.' +
-  // ' We added a concrete implementation of IWindow, and completed porting ContentPage from Xamarin.Forms',
-  //   'For running on Mac you\'ll currently use your favorite text editor and terminal to edit and run apps.' +
-  //   ' We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.',
-  //   'way to get .NET 6 Preview 4 is to install the maui-check dotnet tool from CLI and follow the instructions.',
-  //   'For running on Mac you\'ll currently use your favorite text editor and terminal to edit and run apps.' +
-  //   ' We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.',
-  //   'In Preview 4 we enable push/pop navigation with NavigationPage.' +
-  //   ' We added a concrete implementation of IWindow, and completed porting ContentPage from Xamarin.Forms',
-  //   'For running on Mac you\'ll currently use your favorite text editor and terminal to edit and run apps.' +
-  //   ' We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.',
-  //   'way to get .NET 6 Preview 4 is to install the maui-check dotnet tool from CLI and follow the instructions.',
-  //   'For running on Mac you\'ll currently use your favorite text editor and terminal to edit and run apps.' +
-  //   ' We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.',
-  //   'In Preview 4 we enable push/pop navigation with NavigationPage.' +
-  //   ' We added a concrete implementation of IWindow, and completed porting ContentPage from Xamarin.Forms',
-  //   'For running on Mac you\'ll currently use your favorite text editor and terminal to edit and run apps.' +
-  //   ' We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.'
-  // ]
+  hoverText: 'Unfollow',
+  loadingSpinner: false,
+  activeLine: true,
+  texts: ['way to get .NET 6 Preview 4 is to install the maui-check dotnet tool from CLI and follow the instructions.',
+    'For running on Mac you\'ll currently use your favorite text editor and terminal to edit and run apps.' +
+    ' We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.',
+    'In Preview 4 we enable push/pop navigation with NavigationPage.' +
+  ' We added a concrete implementation of IWindow, and completed porting ContentPage from Xamarin.Forms',
+    'For running on Mac you\'ll currently use your favorite text editor and terminal to edit and run apps.' +
+    ' We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.',
+    'way to get .NET 6 Preview 4 is to install the maui-check dotnet tool from CLI and follow the instructions.',
+    'For running on Mac you\'ll currently use your favorite text editor and terminal to edit and run apps.' +
+    ' We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.',
+    'In Preview 4 we enable push/pop navigation with NavigationPage.' +
+    ' We added a concrete implementation of IWindow, and completed porting ContentPage from Xamarin.Forms',
+    'For running on Mac you\'ll currently use your favorite text editor and terminal to edit and run apps.' +
+    ' We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.',
+    'way to get .NET 6 Preview 4 is to install the maui-check dotnet tool from CLI and follow the instructions.',
+    'For running on Mac you\'ll currently use your favorite text editor and terminal to edit and run apps.' +
+    ' We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.',
+    'In Preview 4 we enable push/pop navigation with NavigationPage.' +
+    ' We added a concrete implementation of IWindow, and completed porting ContentPage from Xamarin.Forms',
+    'For running on Mac you\'ll currently use your favorite text editor and terminal to edit and run apps.' +
+    ' We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.'
+  ]
 }
 
 defaultViewFullStories.story = {

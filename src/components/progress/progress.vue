@@ -18,9 +18,12 @@ export default {
       this.$emit('onFinish')
     }
   },
+  props: {
+    activeLine: Boolean
+  },
   mounted () {
     this.$nextTick(() => {
-      this.active = true
+      this.active = this.activeLine
     })
 
     this.$refs.indicator.addEventListener('transitionend', this.emitOnFinish)
