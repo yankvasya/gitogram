@@ -1,28 +1,35 @@
-<div class="story">
-    <div class="story__header">
-        <progress-line
-            :active-line="activeLine"
-        />
-        <avatar
-            :title="titleStory"
-            src="https://cdn.pixabay.com/photo/2021/01/24/19/05/crane-5946169_960_720.jpg"
-            alt="image"
-        />
-    </div>
-    <div class="story__desc">
-        <div v-if="loadingSpinner" class="spinner">
-            <icon name="spinner" />
+<div class="container">
+    <div class="story" :class="activeStory ? 'active' : ''">
+        <div class="story__header">
+            <progress-line
+                    :active-line="activeStory"
+            />
+            <avatar
+                    :title="titleStory"
+                    :src="avatarSrc"
+                    alt="image"
+            />
         </div>
-        <div class="story__content"  v-else-if="texts">
-            <img src="../../assets/img/story__img.jpg" alt="story image">
-            <p v-for="(n, i) in texts" :key="n" class="story__text">
-                <span class="bold" v-if="i === 0">{{boldText}}</span>
-                {{n}}
-            </p>
+        <div class="story__desc">
+            <div v-if="loadingSpinner" class="spinner">
+                <icon name="spinner" />
+            </div>
+            <div class="story__content"  v-else-if="texts">
+                <img src="../../assets/img/story__img.jpg" alt="story image">
+                <p class="story__text" v-html="texts" />
+            </div>
+            <placeholder v-else :amount="2"/>
         </div>
-        <placeholder v-else :amount="2"/>
+        <div class="story__footer">
+            <x-button :defaultText="defaultText" :hoverText="hoverText" />
+        </div>
     </div>
-    <div class="story__footer">
-        <x-button :defaultText="defaultText" :hoverText="hoverText" ></x-button>
+    <div v-if="activeStory">
+        <a href="#" class="btn btn-prev" @click.prevent>
+            <icon name="arrowSlide" />
+        </a>
+        <a href="#" class="btn btn-next" @click.prevent>
+            <icon name="arrowSlide" />
+        </a>
     </div>
 </div>

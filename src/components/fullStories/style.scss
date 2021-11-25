@@ -12,11 +12,20 @@ $loading-speed: .8s;
   }
 }
 
+.container {
+  position: relative;
+}
 
 .story {
-  max-width: 375px;
+
+  &.active {
+    max-width: 375px;
+    height: 667px;
+  }
+
+  max-width: 302px;
   overflow: hidden;
-  height: 667px;
+  height: 538px;
   background: #FFFFFF;
   border-radius: 8px;
   position: relative;
@@ -53,10 +62,6 @@ $loading-speed: .8s;
       }
     }
 
-    span {
-      font-weight: bold;
-    }
-
     .story__text:not(:first-child) {
       margin-top: 14px;
     }
@@ -75,5 +80,44 @@ $loading-speed: .8s;
     position: sticky;
     bottom: 0;
     border-top: 1px solid #CACACA;
+  }
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  transform: translateY(-50%);
+
+  $btn-margin: -50px;
+
+  & > svg {
+    width: 44px;
+    height: 44px;
+    color: #404040;
+    transition: color .4s;
+
+    &:hover {
+      color: #31AE54;
+      transform: scale(1.1);
+
+      transition: color .6s;
+    }
+  }
+
+  &-prev {
+    left: $btn-margin;
+  }
+
+  &-next {
+    right: $btn-margin;
+
+    & > svg {
+      transform: rotate(180deg);
+
+      &:hover {
+        transform: scale(1.1) rotate(180deg);
+      }
+    }
   }
 }

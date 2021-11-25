@@ -10,13 +10,13 @@ import icon from '../../icons/icon'
 export default {
   name: 'fullStories',
   props: {
-    boldText: String,
-    texts: Array,
+    texts: String,
     titleStory: String,
     defaultText: String,
     hoverText: String,
-    activeLine: Boolean,
-    loadingSpinner: Boolean
+    activeStory: Boolean,
+    loadingSpinner: Boolean,
+    avatarSrc: String
   },
   emits: ['onFinish'],
   components: {
