@@ -9,10 +9,11 @@
     </div>
     <div class="story__desc">
         <img src="../../assets/img/story__img.jpg" alt="story image">
-        <p v-for="(n, i) in texts" :key="n" class="story__text">
+        <p v-if="texts" v-for="(n, i) in texts" :key="n" class="story__text">
             <span class="bold" v-if="i === 0">{{boldText}}</span>
             {{n}}
         </p>
+        <placeholder v-else :amount="2"/>
     </div>
     <div class="story__footer">
         <x-button :defaultText="defaultText" :hoverText="hoverText" ></x-button>

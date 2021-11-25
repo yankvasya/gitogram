@@ -1,8 +1,11 @@
 $base-color: #EAEAEA;
 $shine-color: #FFF;
 $animation-duration: 1.6s;
-$max-width: 504px;
+$max-width-placeholder: 504px;
 
+.w-504 {
+  background: red;
+}
 
 @mixin background-gradient {
   background-image: linear-gradient(90deg, $base-color 0px, $shine-color 40px, $base-color 80px);
@@ -11,6 +14,7 @@ $max-width: 504px;
 
 .placeholders {
   padding: 10px 0;
+  max-width: $max-width-placeholder;
 
   .placeholder {
     position: relative;
@@ -26,15 +30,15 @@ $max-width: 504px;
     }
 
     &:first-child {
-      width: $max-width;
+      max-width: $max-width-placeholder;
     }
 
     &:nth-child(2) {
-      width: 298px;
+      max-width: 65%;
     }
 
     &:last-child {
-      width: 216px;
+      max-width: 50%;
     }
 
     &:not(:first-child) {
@@ -49,6 +53,6 @@ $max-width: 504px;
   }
 
   40%, to {
-    background-position: $max-width;
+    background-position:$max-width-placeholder;
   }
 }

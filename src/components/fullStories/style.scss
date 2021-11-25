@@ -2,12 +2,12 @@ $storyHeaderHeight: 67px;
 $storyFooterHeight: 100px;
 
 .story {
-  width: 375px;
+  max-width: 375px;
+  overflow: hidden;
   height: 667px;
   background: #FFFFFF;
   border-radius: 8px;
   position: relative;
-  overflow: hidden;
 
   &__header {
     padding: 8px 12px 13px 12px;

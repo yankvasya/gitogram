@@ -20,9 +20,11 @@ export const defaultViewPlaceholder = (args) => ({
     }
   },
   template: `
-    <placeholder
-      v-bind="args"
-    />
+    <div class="w-504">
+      <placeholder
+        v-bind="args"
+      />
+    </div>
   `
 })
 

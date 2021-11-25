@@ -4,6 +4,7 @@
 import progressLine from '../progress/progress'
 import avatar from '../avatar/avatar'
 import xButton from '../button/button'
+import placeholder from '../../components/placeholder/placeholder'
 
 export default {
   name: 'fullStories',
@@ -18,7 +19,8 @@ export default {
   components: {
     progressLine,
     avatar,
-    xButton
+    xButton,
+    placeholder
   }
 }
 </script>
