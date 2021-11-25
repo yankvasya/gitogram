@@ -1,32 +1,32 @@
-@keyframes shimmer {
-  from {
-    background: linear-gradient(270deg, #FFFFFF -100%, rgba(255, 255, 255, 0) 100%), #EAEAEA;
-  }
-  35% {
-    background: linear-gradient(270deg, #FFFFFF -100%, rgba(255, 255, 255, 0) 100%), #e1dcdc;
-  }
-  50% {
-    background: linear-gradient(270deg, #FFFFFF -100%, rgba(255, 255, 255, 0) 100%), #dcd7d7;
-  }
-  to {
-    background: linear-gradient(270deg, #FFFFFF -100%, rgba(255, 255, 255, 0) 100%), #EAEAEA;
-  }
+$base-color: #EAEAEA;
+$shine-color: #FFF;
+$animation-duration: 1.6s;
+$max-width: 504px;
+
+
+@mixin background-gradient {
+  background-image: linear-gradient(90deg, $base-color 0px, $shine-color 40px, $base-color 80px);
+  background-size: 600px;
 }
 
 .placeholders {
   padding: 10px 0;
 
   .placeholder {
+    position: relative;
+    background-color: #EAEAEA;
     border-radius: 4px;
     height: 22px;
-    animation: shimmer 1s ease-in-out infinite;
+
+    @include background-gradient;
+    animation: shine-lines $animation-duration infinite linear;
 
     &:hover {
       cursor: wait;
     }
 
     &:first-child {
-      width: 504px;
+      width: $max-width;
     }
 
     &:nth-child(2) {
@@ -40,5 +40,15 @@
     &:not(:first-child) {
       margin-top: 10px;
     }
+  }
+}
+
+@keyframes shine-lines {
+  from {
+    background-position: -100px
+  }
+
+  40%, to {
+    background-position: $max-width;
   }
 }
