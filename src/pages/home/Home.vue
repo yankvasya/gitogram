@@ -2,7 +2,11 @@
   <header>
     <top>
       <template #topMenu>
-        <topMenu />
+        <topMenu >
+          <template #rightMenu>
+            <profile />
+          </template>
+        </topMenu>
       </template>
       <template #stories>
         <stories v-for="n in repos.data" :username="n.owner?.login" :key="n" :stories-img="n.owner?.avatar_url"/>
@@ -41,12 +45,14 @@ import stories from '../../components/stories/stories'
 import post from '../../components/posts/posts'
 import postsContainer from '../../components/postsContainer/postsContainer'
 import { mapState, mapActions } from 'vuex'
+import profile from '../../components/profile/profile'
 
 export default {
   name: 'Home',
   components: {
     top,
     topMenu,
+    profile,
     stories,
     post,
     postsContainer

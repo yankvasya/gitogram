@@ -1,3 +1,25 @@
-<placeholder
-        :amount="amountPlaceholders"
-></placeholder>
+    <header>
+        <top>
+            <template #topMenu>
+                <a href="#" @click.prevent>
+                    <icon name="logo" />
+                </a>
+            </template>
+        </top>
+    </header>
+
+    <main class="stories-container">
+        <ul class="stories">
+            <full-stories
+                    v-for="n in 10"
+                    :key="n"
+                    :default-text="defaultText"
+                    :title-story="titleStory"
+                    :hover-text="hoverText"
+                    :active-story="activeStory"
+                    :loading-spinner="loadingSpinner"
+                    :avatar-src="avatarSrc"
+                    :texts="texts"
+            />
+        </ul>
+    </main>

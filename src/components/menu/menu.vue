@@ -12,15 +12,6 @@ export default {
   methods: {
     logoClick () {
       this.$emit('change', 'logo click')
-    },
-    homeClick () {
-      this.$emit('change', 'home')
-    },
-    logoutClick () {
-      this.$emit('change', 'logout')
-    },
-    profileClick () {
-      this.$emit('change', 'profile')
     }
   }
 }
