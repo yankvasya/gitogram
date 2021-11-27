@@ -1,13 +1,14 @@
-<li class="story-container">
+<li class="story-container" :class="activeStory ? 'active' : ''">
     <div class="story" :class="activeStory ? 'active' : ''">
         <div class="story__header">
             <progress-line
                     :active-line="activeStory"
+                    @onFinish="activeStory && btnsShown.includes('next') ? $emit('onNextSlide') : null"
             />
             <avatar
                     :title="titleStory"
                     :src="avatarSrc"
-                    alt="image"
+                    :alt="titleStory+' icon'"
             />
         </div>
         <div class="story__desc">
@@ -22,13 +23,15 @@
         <div class="story__footer">
             <x-button :defaultText="defaultText" :hoverText="hoverText" />
         </div>
-    </div>
-    <div v-if="activeStory">
-        <a href="#" class="btn btn-prev" @click.prevent>
-            <icon name="arrowSlide" />
-        </a>
-        <a href="#" class="btn btn-next" @click.prevent>
-            <icon name="arrowSlide" />
-        </a>
+
+        <div v-if="activeStory">
+            <a v-if="btnsShown.includes('prev')" href="#" class="btn btn-prev" @click.prevent="$emit('onPrevSlide')">
+                <icon name="arrowSlide" />
+            </a>
+            <a v-if="btnsShown.includes('next')" href="#" class="btn btn-next"
+               @click.prevent="$emit('onNextSlide')">
+                <icon name="arrowSlide" />
+            </a>
+        </div>
     </div>
 </li>

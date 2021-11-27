@@ -12,12 +12,17 @@ export default {
     fullStories,
     icon
   },
+  data () {
+    return {
+      slideNdx: 0,
+      sliderPosition: 0
+    }
+  },
   props: {
     texts: String,
-    // titleStory: String,
+    titleStory: String,
     defaultText: String,
     hoverText: String,
-    activeStory: Boolean,
     loadingSpinner: Boolean,
     avatarSrc: String
   },
@@ -25,12 +30,22 @@ export default {
     ...mapActions({
       fetchRepositories: 'repositories/fetchRepositories',
       fetchIssues: 'issues/fetchIssues'
-    })
+    }),
+    handleSlide (slideNdx) {
+      const { slider, item } = this.$refs
+      const slideWidth = getComputedStyle(item).getPropertyValue('width') // 376 // getComputedStyle(item).getPropertyValue('width')
+      this.slideNdx = slideNdx
+      this.sliderPosition = parseInt(slideWidth) / 10 * parseInt(slideNdx)
+      slider.style.transform = `translateX(-${this.sliderPosition}px)`
+    }
   },
   computed: {
     ...mapState({
       repos: state => state.repositories
-    })
+    }),
+    activeBtns () {
+      return this.slideNdx === 0 ? ['next'] : (this.slideNdx === this.repos.data.length - 1) ? ['prev'] : ['next', 'prev']
+    }
   },
   async created () {
     await this.fetchRepositories()

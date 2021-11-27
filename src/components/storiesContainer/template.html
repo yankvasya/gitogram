@@ -1,17 +1,24 @@
 <main class="stories-container">
-    <pre v-if="repos.loading">loading stories...</pre>
-    <pre v-else-if="repos.error">{{repos.error}}</pre>
-    <ul class="stories" v-else>
-        <full-stories
-                v-for="n in repos.data"
-                :key="n"
-                :default-text="defaultText"
-                :hover-text="hoverText"
-                :title-story="n.owner.login"
-                :active-story="activeStory"
-                :loading-spinner="repos.loading"
-                :avatar-src="n.owner.avatar_url"
-                :texts="n.description"
-        />
-    </ul>
+    <div class="stories-slider" >
+        <pre v-if="repos.loading">loading stories...</pre>
+        <pre v-else-if="repos.error">{{repos.error}}</pre>
+        <div class="stories" v-else ref="slider">
+            <ul class="stories__list" ref="item">
+                <full-stories
+                        v-for="(n,i) in repos.data"
+                        :key="n.id"
+                        :default-text="defaultText"
+                        :hover-text="hoverText"
+                        :title-story="n.owner.login"
+                        :loading-spinner="repos.loading"
+                        :btnsShown="activeBtns"
+                        :avatar-src="n.owner.avatar_url"
+                        :texts="n.description"
+                        :active-story="i === slideNdx"
+                        @onNextSlide="handleSlide(slideNdx + 1)"
+                        @onPrevSlide="handleSlide(slideNdx - 1)"
+                />
+            </ul>
+        </div>
+    </div>
 </main>

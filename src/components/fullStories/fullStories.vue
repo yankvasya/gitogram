@@ -14,11 +14,16 @@ export default {
     titleStory: String,
     defaultText: String,
     hoverText: String,
-    activeStory: Boolean,
     loadingSpinner: Boolean,
-    avatarSrc: String
+    activeStory: Boolean,
+    avatarSrc: String,
+    btnsShown: {
+      type: Array,
+      default: () => ['next', 'prev'],
+      validator: v => v.every(e => e === 'next' || e === 'prev')
+    }
   },
-  emits: ['onFinish'],
+  emits: ['onFinish', 'onPrevSlide', 'onNextSlide'],
   components: {
     progressLine,
     avatar,

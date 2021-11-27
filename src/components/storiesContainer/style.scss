@@ -1,7 +1,19 @@
 .stories {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
+  transition: .4s;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    margin-left: -188px;
+    transition: .4s;
+    //transform: translateX(-200px);
+  }
+
+  &-slider {
+    position: relative;
+  }
 
 
   .story-container {

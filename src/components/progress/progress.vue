@@ -1,5 +1,5 @@
 <template>
-  <div :class={active} class="progress">
+  <div :class="(active || activeLine) ? 'active' : ''" class="progress">
     <div ref="indicator" class="progress__line"></div>
   </div>
 </template>
