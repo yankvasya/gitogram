@@ -1,0 +1,40 @@
+.all-stories {
+  background: linear-gradient(0deg, #101010, #101010);
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding-top: 43.5px;
+
+  svg {
+    color: #FFFFFF;
+
+    transition: color 1s;
+
+    &:hover {
+      color: #a29595;
+
+      transition: color 1s;
+    }
+  }
+
+  .icon {
+    &-logo {
+      width: 174px;
+    }
+
+    &-close {
+      width: 23px;
+    }
+  }
+}
+
+.header__stories {
+  display: flex;
+  justify-content: space-between;
+}

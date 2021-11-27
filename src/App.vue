@@ -1,14 +1,17 @@
 <template>
-<Home />
+<!--<Home />-->
+  <Stories></Stories>
 </template>
 
 <script>
-import Home from './pages/home/Home'
+// import Home from './pages/home/Home'
+import Stories from './pages/storiesPage/Stories'
 
 export default {
   name: 'App',
   components: {
-    Home
+    // Home
+    Stories
   }
 }
 </script>

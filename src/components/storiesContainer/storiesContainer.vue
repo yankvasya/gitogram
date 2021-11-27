@@ -2,14 +2,12 @@
 
 <script>
 import fullStories from '../../components/fullStories/fullStories'
-import top from '../../components/header/header'
 import icon from '../../icons/icon'
 
 export default {
   name: 'storiesContainer',
   components: {
     fullStories,
-    top,
     icon
   },
   props: {
