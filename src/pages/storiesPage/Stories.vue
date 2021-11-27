@@ -17,15 +17,20 @@
     </header>
 
     <stories-container
-      texts="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium atque consequatur eligendi, expedita fuga in ipsum iure necessitatibus, nesciunt nostrum placeat quidem repellendus reprehenderit saepe sapiente temporibus unde, vel voluptatem."
-      titleStory="Title story"
-      hover-text="Unfollow"
       default-text="Follow"
-      :active-story="false"
-      :loading-spinner="false"
-      avatar-src="https://cdn.pixabay.com/photo/2021/01/24/19/05/crane-5946169_960_720.jpg"
+      hover-text="Unfollow"
     />
+<!--        <stories-container-->
+<!--      texts="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium atque consequatur eligendi, expedita fuga in ipsum iure necessitatibus, nesciunt nostrum placeat quidem repellendus reprehenderit saepe sapiente temporibus unde, vel voluptatem."-->
+<!--      titleStory="Title story"-->
+<!--      hover-text="Unfollow"-->
+<!--      default-text="Follow"-->
+<!--      :active-story="false"-->
+<!--      :loading-spinner="false"-->
+<!--      avatar-src="https://cdn.pixabay.com/photo/2021/01/24/19/05/crane-5946169_960_720.jpg"-->
+<!--    />-->
   </div>
+
 </template>
 
 <script>
@@ -39,9 +44,6 @@ export default {
     top,
     icon,
     storiesContainer
-  },
-  props: {
-    avatarSrc: String
   }
 }
 </script>

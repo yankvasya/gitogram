@@ -1,15 +1,17 @@
 <main class="stories-container">
-    <ul class="stories">
+    <pre v-if="repos.loading">loading stories...</pre>
+    <pre v-else-if="repos.error">{{repos.error}}</pre>
+    <ul class="stories" v-else>
         <full-stories
-                v-for="n in 10"
+                v-for="n in repos.data"
                 :key="n"
                 :default-text="defaultText"
-                :title-story="titleStory"
                 :hover-text="hoverText"
+                :title-story="n.owner.login"
                 :active-story="activeStory"
-                :loading-spinner="loadingSpinner"
-                :avatar-src="avatarSrc"
-                :texts="texts"
+                :loading-spinner="repos.loading"
+                :avatar-src="n.owner.avatar_url"
+                :texts="n.description"
         />
     </ul>
 </main>

@@ -44,8 +44,9 @@ import top from '../../components/header/header'
 import stories from '../../components/stories/stories'
 import post from '../../components/posts/posts'
 import postsContainer from '../../components/postsContainer/postsContainer'
-import { mapState, mapActions } from 'vuex'
 import profile from '../../components/profile/profile'
+
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Home',
