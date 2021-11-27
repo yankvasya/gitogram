@@ -30,14 +30,26 @@ export default {
   methods: {
     ...mapActions({
       fetchRepositories: 'repositories/fetchRepositories',
-      fetchIssues: 'issues/fetchIssues'
+      fetchIssues: 'issues/fetchIssues',
+      fetchReadme: 'repositories/fetchReadme'
     }),
-    handleSlide (slideNdx) {
+    moveSlider (slideNdx) {
       const { slider, item } = this.$refs
       const slideWidth = getComputedStyle(item).getPropertyValue('width') // 376 // getComputedStyle(item).getPropertyValue('width')
       this.slideNdx = slideNdx
       this.sliderPosition = parseInt(slideWidth) / 10 * parseInt(slideNdx)
       slider.style.transform = `translateX(-${this.sliderPosition}px)`
+    },
+    async loadReadme () {
+      await this.fetchReadmeForActiveSlide()
+    },
+    async handleSlide (slideNdx) {
+      this.moveSlider(slideNdx)
+      await this.loadReadme()
+    },
+    async fetchReadmeForActiveSlide () {
+      const { id, owner, name } = this.repos.data[this.slideNdx]
+      await this.fetchReadme({ id, owner: owner.login, repo: name })
     }
   },
   computed: {
@@ -50,7 +62,7 @@ export default {
   },
   async created () {
     await this.fetchRepositories()
-    await this.fetchIssues(this.repos)
+    await this.loadReadme()
     this.slideCreated = true
   }
 }

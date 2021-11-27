@@ -31,6 +31,17 @@ export default {
       } finally {
         commit('SET_REPO_LOADING', false)
       }
+    },
+    async fetchReadme (store, { id, owner, repo }) {
+      try {
+        const { data } = await api.trandings.getReadme({ owner, repo })
+        console.log(data)
+      } catch (e) {
+        console.warn(e)
+        throw e
+      } finally {
+        console.warn('Readme получен')
+      }
     }
   }
 }
