@@ -28,8 +28,7 @@
             <a v-if="btnsShown.includes('prev')" href="#" class="btn btn-prev" @click.prevent="$emit('onPrevSlide')">
                 <icon name="arrowSlide" />
             </a>
-            <a v-if="btnsShown.includes('next')" href="#" class="btn btn-next"
-               @click.prevent="$emit('onNextSlide')">
+            <a v-if="btnsShown.includes('next')" href="#" class="btn btn-next" @click.prevent="$emit('onNextSlide')">
                 <icon name="arrowSlide" />
             </a>
         </div>
