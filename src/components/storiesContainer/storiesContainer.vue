@@ -15,7 +15,8 @@ export default {
   data () {
     return {
       slideNdx: 0,
-      sliderPosition: 0
+      sliderPosition: 0,
+      slideCreated: false
     }
   },
   props: {
@@ -50,6 +51,7 @@ export default {
   async created () {
     await this.fetchRepositories()
     await this.fetchIssues(this.repos)
+    this.slideCreated = true
   }
 }
 </script>
