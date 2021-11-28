@@ -23,7 +23,7 @@ export default {
       validator: v => v.every(e => e === 'next' || e === 'prev')
     }
   },
-  emits: ['onFinish', 'onPrevSlide', 'onNextSlide'],
+  emits: ['onFinish', 'onPrevSlide', 'onNextSlide', 'goFirstSlide'],
   components: {
     progressLine,
     avatar,

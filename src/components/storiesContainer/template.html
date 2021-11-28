@@ -17,6 +17,7 @@
                         :active-story="i === slideNdx && slideCreated"
                         @onNextSlide="handleSlide(slideNdx + 1)"
                         @onPrevSlide="handleSlide(slideNdx - 1)"
+                        @goFirstSlide="handleSlide(0)"
                 />
             </ul>
         </div>

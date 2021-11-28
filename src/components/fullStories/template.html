@@ -3,7 +3,8 @@
         <div class="story__header">
             <progress-line
                     :active-line="activeStory"
-                    @onFinish="activeStory && btnsShown.includes('next') ? $emit('onNextSlide') : null"
+                    @onFinish="activeStory && btnsShown.includes('next') ? $emit('onNextSlide') :
+                     !btnsShown.includes('next') && activeStory ? $emit('goFirstSlide') : null"
             />
             <avatar
                     :title="titleStory"
