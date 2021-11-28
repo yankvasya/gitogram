@@ -10,7 +10,7 @@
                         :default-text="defaultText"
                         :hover-text="hoverText"
                         :title-story="n.owner.login"
-                        :loading-spinner="readme.loading"
+                        :loading-spinner="i === slideNdx && readme.loading"
                         :btnsShown="activeBtns"
                         :avatar-src="n.owner.avatar_url"
                         :texts="readme.data?.[i]?.content"
