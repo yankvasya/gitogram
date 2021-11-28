@@ -30,8 +30,7 @@ export default {
   methods: {
     ...mapActions({
       fetchRepositories: 'repositories/fetchRepositories',
-      fetchIssues: 'issues/fetchIssues',
-      fetchReadme: 'repositories/fetchReadme'
+      fetchReadme: 'readme/fetchReadme'
     }),
     moveSlider (slideNdx) {
       const { slider, item } = this.$refs
@@ -54,7 +53,8 @@ export default {
   },
   computed: {
     ...mapState({
-      repos: state => state.repositories
+      repos: state => state.repositories,
+      readme: state => state.readme
     }),
     activeBtns () {
       return this.slideNdx === 0 ? ['next'] : (this.slideNdx === this.repos.data.length - 1) ? ['prev'] : ['next', 'prev']
