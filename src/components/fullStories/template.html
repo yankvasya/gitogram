@@ -13,11 +13,11 @@
             />
         </div>
         <div class="story__desc">
-            <div v-if="loadingSpinner" class="spinner">
-                <icon name="spinner" />
-            </div>
-            <div class="story__content"  v-else-if="texts">
+            <div class="story__content"  v-if="texts">
                 <p class="story__text" v-html="texts" />
+            </div>
+            <div v-else-if="loadingSpinner" class="spinner">
+                <icon name="spinner" />
             </div>
             <placeholder v-else :amount="2"/>
         </div>
