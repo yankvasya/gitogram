@@ -38,7 +38,9 @@ export default {
   },
   methods: {
     goToHome () {
-      this.$router.push('/')
+      this.$router.push({
+        name: 'home'
+      })
     },
     goBack () {
       this.$router.go(-1)

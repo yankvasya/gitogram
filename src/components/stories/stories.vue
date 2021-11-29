@@ -10,7 +10,9 @@ export default {
   },
   methods: {
     goToStories () {
-      this.$router.push('/stories')
+      this.$router.push({
+        name: 'stories'
+      })
     }
   }
 }
