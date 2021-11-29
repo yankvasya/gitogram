@@ -63,7 +63,9 @@ export default {
   async created () {
     await this.fetchRepositories()
     await this.loadReadme()
-    this.slideCreated = true
+    setTimeout(() => {
+      this.slideCreated = true
+    }, 100)
   }
 }
 </script>

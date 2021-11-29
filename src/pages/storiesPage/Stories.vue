@@ -4,11 +4,11 @@
       <top>
         <template #topMenu>
           <div class="header__stories">
-            <a href="#" @click.prevent>
+            <a href="#" @click.prevent="goToHome">
               <icon name="logo" class="icon-logo"/>
             </a>
 
-            <a href="#" @click.prevent>
+            <a href="#" @click.prevent="goBack">
               <icon name="close" class="icon-close" />
             </a>
           </div>
@@ -35,6 +35,14 @@ export default {
     top,
     icon,
     storiesContainer
+  },
+  methods: {
+    goToHome () {
+      this.$router.push('/')
+    },
+    goBack () {
+      this.$router.go(-1)
+    }
   }
 }
 </script>

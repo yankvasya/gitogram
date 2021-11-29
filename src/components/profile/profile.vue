@@ -28,7 +28,7 @@ export default {
   components: {
     icon
   },
-  emits: ['onFinish'],
+  emits: ['onFinish', 'homeClick', 'logoutClick', 'profileClick'],
   methods: {
     emitHomeClick () {
       this.$emit('homeClick')

@@ -1,18 +1,11 @@
 <template>
-<!--<Home />-->
-  <Stories></Stories>
+  <router-view />
 </template>
 
 <script>
-// import Home from './pages/home/Home'
-import Stories from './pages/storiesPage/Stories'
 
 export default {
-  name: 'App',
-  components: {
-    // Home
-    Stories
-  }
+  name: 'App'
 }
 </script>
 
