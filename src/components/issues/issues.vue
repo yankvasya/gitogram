@@ -3,6 +3,7 @@
 <script>
 import issue from '../../components/issue/issue'
 import { mapActions, mapState } from 'vuex'
+import placeholder from '../../components/placeholder/placeholder'
 
 export default {
   name: 'issues',
@@ -29,7 +30,8 @@ export default {
     }
   },
   components: {
-    issue
+    issue,
+    placeholder
   },
   computed: {
     ...mapState({
