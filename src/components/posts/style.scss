@@ -1,3 +1,15 @@
+@keyframes spinner-loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+$img-spinner-time: .8s;
+
 .post {
   width: 100%;
   &:not(:last-child) {
@@ -14,6 +26,20 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
+  }
+
+  &__img.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #A8A8A8;
+    color: #fff;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      animation: spinner-loading $img-spinner-time linear infinite;
+    }
   }
 
   &__nickname {

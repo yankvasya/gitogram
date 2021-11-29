@@ -3,6 +3,7 @@
 <script>
 import framework from '../../components/framework/framework'
 import issues from '../../components/issues/issues'
+import icon from '../../icons/icon'
 
 export default {
   name: 'posts',
@@ -23,18 +24,23 @@ export default {
   },
   data () {
     return {
-      num: -1
+      num: -1,
+      isImgLoaded: false
     }
   },
   methods: {
     forever (n) {
       this.num = this.random(n)
       return this.num
+    },
+    imgLoaded () {
+      this.isImgLoaded = true
     }
   },
   components: {
     framework,
-    issues
+    issues,
+    icon
   }
 }
 </script>

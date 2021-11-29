@@ -1,6 +1,11 @@
 <li class="post">
     <div class="post__author">
-        <img :src="postImg" alt="avatar" class="post__img">
+        <div class="post__img loading" v-if="!isImgLoaded">
+           <icon name="imgSpinner" />
+        </div>
+        <img
+                :src="postImg" alt="avatar" class="post__img"
+                v-show="isImgLoaded" @load="imgLoaded">
         <h3 class="post__nickname">{{username}}</h3>
     </div>
 

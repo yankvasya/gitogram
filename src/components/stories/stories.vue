@@ -1,7 +1,7 @@
 <template src="./template.html" />
 
 <script>
-import icon from '@/icons/icon'
+import icon from '../../icons/icon'
 
 export default {
   name: 'stories',
@@ -25,7 +25,6 @@ export default {
       })
     },
     imgLoaded () {
-      console.log('Говно загружено')
       this.isImgLoaded = true
     }
   },

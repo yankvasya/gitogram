@@ -44,13 +44,12 @@ $img-spinner-time: .9s;
       align-items: center;
       background: #9E9E9E;
       color: white;
-      animation: spinner-loading linear $img-spinner-time infinite;
-    }
 
-
-    svg {
-      width: 21px;
-      height: 21px;
+      svg {
+        width: 21px;
+        height: 21px;
+        animation: spinner-loading linear $img-spinner-time infinite;
+      }
     }
   }
 
