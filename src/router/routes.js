@@ -1,5 +1,6 @@
 import Home from '../pages/home/Home'
 import Stories from '../pages/storiesPage/Stories'
+import notFound from '../pages/notFound/notFound'
 export default [
   {
     path: '/',
@@ -7,8 +8,13 @@ export default [
     name: 'home'
   },
   {
-    path: '/stories',
+    path: '/stories/:id(\\d+)', // принимает только числа под id (регулярка)
     component: Stories,
-    name: 'stories'
+    name: 'stories',
+    props: true
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: notFound
   }
 ]

@@ -34,10 +34,18 @@ html, body {
   justify-content: center;
 }
 
+.align-center {
+  align-items: center;
+}
+
 .d-none {
   display: none;
 }
 
 .w-504 {
   width: 504px;
+}
+
+.h-100vh {
+  height: 100vh;
 }

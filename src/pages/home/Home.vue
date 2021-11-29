@@ -9,7 +9,7 @@
         </topMenu>
       </template>
       <template #stories>
-        <stories v-for="n in repos.data" :username="n.owner?.login" :key="n" :stories-img="n.owner?.avatar_url"/>
+        <stories v-for="n in repos.data" :username="n.owner?.login" :key="n" :stories-img="n.owner?.avatar_url" :id="n.id"/>
       </template>
     </top>
   </header>
