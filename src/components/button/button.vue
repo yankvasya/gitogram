@@ -1,7 +1,8 @@
 <template>
   <a href="#" class="button" @click.prevent>
-    <span>{{defaultText}}</span>
-    <span>{{hoverText}}</span>
+    <span class="default-text">{{defaultText}}</span>
+    <span class="hover-text">{{hoverText}}</span>
+    <slot />
   </a>
 </template>
 
