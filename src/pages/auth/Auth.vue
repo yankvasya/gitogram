@@ -23,8 +23,8 @@
 import icon from '../../icons/icon'
 import xButton from '../../components/button/button'
 
-const clientID = 'be26530e754b96676558'
-const clientSecret = '3258a8de3a39fd8e8af1c141b10586ccd81c6317'
+const clientId = 'be26530e754b96676558'
+const clientSecret = 'ae948450f628a5f6a881fb6a77bbd2f5df65e02f'
 
 export default {
   name: 'Auth',
@@ -38,7 +38,7 @@ export default {
 
       const params = new URLSearchParams()
 
-      params.append('client_id', clientID)
+      params.append('client_id', clientId)
       params.append('scope', 'repo:status read:user')
 
       window.location.href = `${githubAuthApi}?${params}`
@@ -46,10 +46,6 @@ export default {
   },
   async created () {
     const code = new URLSearchParams(window.location.search).get('code')
-
-    console.log(clientID, 'clientID')
-    console.log(clientSecret, 'clientSecret')
-    console.log(code, 'code')
 
     if (code) {
       try {
@@ -59,14 +55,14 @@ export default {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            clientID, code, clientSecret
+            clientId, code, clientSecret
           })
         })
 
         const { token } = await response.json()
 
-        console.log(token, ' this is token')
-        // this.$router.replace("/");
+        localStorage.setItem('token', token)
+        await this.$router.replace('/')
       } catch (e) {
         console.warn(e)
       }
