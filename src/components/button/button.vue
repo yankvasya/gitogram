@@ -1,5 +1,5 @@
 <template>
-  <a href="#" class="button" @click.prevent>
+  <a href="#" class="button" @click.prevent="$emit('onClick')">
     <span class="default-text">{{defaultText}}</span>
     <span class="hover-text">{{hoverText}}</span>
     <slot />
@@ -12,7 +12,8 @@ export default {
   props: {
     defaultText: String,
     hoverText: String
-  }
+  },
+  emits: ['onClick']
 }
 </script>
 

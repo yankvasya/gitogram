@@ -6,6 +6,10 @@ export default {
     xButton
   },
   argTypes: {
+    buttonClick: {
+      action: 'button click',
+      description: 'if button was clicked'
+    },
     control: { type: 'text' }
   }
 }
@@ -20,6 +24,7 @@ export const defaultViewButton = (args) => ({
   template: `
     <x-button
       v-bind="args"
+      @onClick="args.buttonClick"
     />
   `
 })
