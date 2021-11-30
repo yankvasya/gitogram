@@ -1,0 +1,25 @@
+<main class="stories-container">
+    <div class="stories-slider" >
+        <pre v-if="repos.loading">loading stories...</pre>
+        <pre v-else-if="repos.error">{{repos.error}}</pre>
+        <div class="stories" v-else ref="slider">
+            <ul class="stories__list" ref="item">
+                <full-stories
+                        v-for="(n,i) in repos.data"
+                        :key="n.id"
+                        :default-text="defaultText"
+                        :hover-text="hoverText"
+                        :title-story="n.owner.login"
+                        :loading-spinner="i === slideNdx && readme.loading"
+                        :btnsShown="activeBtns"
+                        :avatar-src="n.owner.avatar_url"
+                        :texts="readme.data?.[i]?.content"
+                        :active-story="i === slideNdx && slideCreated"
+                        @onNextSlide="handleSlide(slideNdx + 1)"
+                        @onPrevSlide="handleSlide(slideNdx - 1)"
+                        @goFirstSlide="handleSlide(0)"
+                />
+            </ul>
+        </div>
+    </div>
+</main>

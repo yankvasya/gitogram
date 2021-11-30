@@ -1,3 +1,15 @@
+@keyframes spinner-loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+$img-spinner-time: .9s;
+
 .stories {
   display: flex;
   background: red;
@@ -25,6 +37,20 @@
     height: 80px;
     border-radius: 50%;
     z-index: 3;
+
+    &.loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #9E9E9E;
+      color: white;
+
+      svg {
+        width: 21px;
+        height: 21px;
+        animation: spinner-loading linear $img-spinner-time infinite;
+      }
+    }
   }
 
   &.new {

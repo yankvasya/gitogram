@@ -1,30 +1,39 @@
-import progress from './progress'
+import timeline from './progress'
 
 export default {
-  title: 'progress',
+  title: 'timeline',
   components: {
-    progress
+    timeline
   },
   argTypes: {
     onFinish: {
       action: 'onFinish',
       description: 'fires when progress reaches the end'
-    }
+    },
+    activeLine: { type: 'boolean' }
   }
 }
 
-export const defaultViewProgress = (args) => ({
-  components: { progressLine: progress },
+export const defaultViewProgressLine = (args) => ({
+  components: {
+    timeline
+  },
   data () {
     return {
       args
     }
   },
   template: `
-    <progress-line @onFinish="args.onFinish" />
+    <timeline
+      v-bind="args"
+      @onFinish="args.onFinish" />
   `
 })
 
-defaultViewProgress.story = {
+defaultViewProgressLine.args = {
+  activeLine: true
+}
+
+defaultViewProgressLine.story = {
   name: 'Стандартный вид'
 }

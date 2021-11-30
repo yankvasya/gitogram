@@ -1,6 +1,8 @@
 <template src="./template.html" />
 
 <script>
+import icon from '../../icons/icon'
+
 export default {
   name: 'framework',
   props: {
@@ -9,6 +11,9 @@ export default {
     desc: String,
     stars: Number,
     forks: Number
+  },
+  components: {
+    icon
   }
 }
 </script>

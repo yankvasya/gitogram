@@ -1,24 +1,35 @@
 <template src="./template.html"/>
 
 <script>
-import progress from '../progress/progress'
+import progressLine from '../progress/progress'
 import avatar from '../avatar/avatar'
-import button from '../button/button'
+import xButton from '../button/button'
+import placeholder from '../../components/placeholder/placeholder'
+import icon from '../../icons/icon'
 
 export default {
   name: 'fullStories',
   props: {
-    boldText: String,
-    texts: Array,
+    texts: String,
     titleStory: String,
     defaultText: String,
-    hoverText: String
+    hoverText: String,
+    loadingSpinner: Boolean,
+    activeStory: Boolean,
+    avatarSrc: String,
+    btnsShown: {
+      type: Array,
+      default: () => ['next', 'prev'],
+      validator: v => v.every(e => e === 'next' || e === 'prev')
+    }
   },
-  emits: ['onFinish'],
+  emits: ['onFinish', 'onPrevSlide', 'onNextSlide', 'goFirstSlide'],
   components: {
-    progressLine: { progress },
+    progressLine,
     avatar,
-    xButton: { button }
+    xButton,
+    placeholder,
+    icon
   }
 }
 </script>

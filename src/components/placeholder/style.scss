@@ -1,0 +1,58 @@
+$base-color: #EAEAEA;
+$shine-color: #FFF;
+$animation-duration: 1.6s;
+$max-width-placeholder: 504px;
+
+.w-504 {
+  background: red;
+}
+
+@mixin background-gradient {
+  background-image: linear-gradient(90deg, $base-color 0px, $shine-color 40px, $base-color 80px);
+  background-size: 600px;
+}
+
+.placeholders {
+  padding: 10px 0;
+  max-width: $max-width-placeholder;
+
+  .placeholder {
+    position: relative;
+    background-color: #EAEAEA;
+    border-radius: 4px;
+    height: 22px;
+
+    @include background-gradient;
+    animation: shine-lines $animation-duration infinite linear;
+
+    &:hover {
+      cursor: wait;
+    }
+
+    &:first-child {
+      max-width: $max-width-placeholder;
+    }
+
+    &:nth-child(2) {
+      max-width: 65%;
+    }
+
+    &:last-child {
+      max-width: 50%;
+    }
+
+    &:not(:first-child) {
+      margin-top: 10px;
+    }
+  }
+}
+
+@keyframes shine-lines {
+  from {
+    background-position: -100px
+  }
+
+  40%, to {
+    background-position:$max-width-placeholder;
+  }
+}

@@ -1,12 +1,12 @@
 <template>
-  <div :class={active} class="progress">
+  <div :class="(active || activeLine) ? 'active' : ''" class="progress">
     <div ref="indicator" class="progress__line"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'progress',
+  name: 'timeline',
   data () {
     return {
       active: false
@@ -18,9 +18,12 @@ export default {
       this.$emit('onFinish')
     }
   },
+  props: {
+    activeLine: Boolean
+  },
   mounted () {
     this.$nextTick(() => {
-      this.active = true
+      this.active = this.activeLine
     })
 
     this.$refs.indicator.addEventListener('transitionend', this.emitOnFinish)
@@ -31,4 +34,4 @@ export default {
 }
 </script>
 
-<style lang="scss" src="./style.scss" scoped></style>
+<style lang="scss" src="./style.scss" scoped />

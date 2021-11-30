@@ -4,13 +4,22 @@
         <img src="../../assets/icons/toggler.svg" alt="toggler" class="toggler__arrow">
     </a>
 
-    <ul class="issues__content" v-if="isShow" v-for="(n, i) in this.items" :key="n">
-        <issue
-                v-if="frameworkName === n.name"
-                v-for="n of this.issues[i]"
-                :key="n"
-                :username="n.user.login"
-                :issue="n.title"
-        />
-    </ul>
+    <div class="issues__content" v-if="isShow">
+        <div v-if="issues.loading">
+            <placeholder :amount="1" />
+        </div>
+        <div v-else-if="issues.error">{{issues.error}}</div>
+
+        <ul class="issues__content loaded" v-else>
+            <li v-for="(n, i) in repos.data" :key="n">
+                <issue
+                        v-if="issues.data && frameworkName === n.name"
+                        v-for="n of issues.data[i]"
+                        :key="n"
+                        :username="n.user.login"
+                        :issue="n.title"
+                />
+            </li>
+        </ul>
+    </div>
 </div>

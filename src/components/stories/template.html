@@ -1,8 +1,12 @@
 <li class="story new">
-    <a href="#" class="story__link">
-        <div class="story__img-box">
-            <img :src="storiesImg" :alt="username + ' github'" class="story__img">
-        </div>
-        <h3 class="story__name">{{username}}</h3>
+    <a href="#" class="story__link" @click.prevent="goToStories">
+       <div class="story__img-box">
+           <div class="story__img loading" v-if="!isImgLoaded">
+               <icon name="imgSpinner" />
+           </div>
+           <img v-show="isImgLoaded" :src="storiesImg" :alt="id" class="story__img"
+                @load="imgLoaded">
+       </div>
+       <h3 class="story__name">{{username}}</h3>
     </a>
 </li>

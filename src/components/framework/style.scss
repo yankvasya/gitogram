@@ -48,9 +48,6 @@
 
         &:hover {
           background: #eeebeb;
-          box-shadow: inset 1px -1px 0px rgba(27, 31, 35, 0.12), inset 0px 1px 0px rgba(27, 31, 35, 0.12),
-          1px 1px 3px rgba(27,31,35, .5);
-
           transition: all .5s;
         }
       }
@@ -67,6 +64,7 @@
         width: 16px;
         height: 16px;
         margin-right: 4px;
+        color: #586069;
       }
 
       &__num {
@@ -92,12 +90,36 @@
         }
       }
 
+      &.star {
+        z-index: 1;
+      }
+
       &.fork {
         .util__title, .util__num {
           font-style: normal;
           font-weight: 600;
           font-size: 12px;
         }
+      }
+
+      &:hover {
+        .util__icon {
+          color: #31AE54;
+        }
+      }
+    }
+    
+    .util:first-child {
+      .util__name:hover {
+        box-shadow: inset 1px -1px 0px rgba(27, 31, 35, 0.12), inset 0px 1px 0px rgba(27, 31, 35, 0.12),
+        .5px 1px 5px rgba(27,31,35, .5);
+      }
+    }
+
+    .util:not(:first-child) {
+      .util__name:hover {
+        box-shadow: inset 1px -1px 0px rgba(27, 31, 35, 0.12), inset 0px 1px 0px rgba(27, 31, 35, 0.12),
+        .5px 1px 5px rgba(27,31,35, .5),-1px 0px 1px white;
       }
     }
   }

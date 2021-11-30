@@ -1,0 +1,28 @@
+.stories {
+  transition: .4s;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    margin-left: -188px;
+    transition: .4s;
+  }
+
+  &-slider {
+    position: relative;
+  }
+
+
+  .story-container {
+
+    &:not(:first-child) {
+      //margin-left: 38px;
+    }
+  }
+}
+
+pre {
+  color: #fff;
+}

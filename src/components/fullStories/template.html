@@ -1,22 +1,37 @@
-<div class="story">
-    <div class="story__header">
-<!--        <progress-line></progress-line>-->
-        <avatar
-            :title="titleStory"
-            src="https://cdn.pixabay.com/photo/2021/01/24/19/05/crane-5946169_960_720.jpg"
-            alt="image"
-        />
+<li class="story-container" :class="activeStory ? 'active' : ''">
+    <div class="story" :class="activeStory ? 'active' : ''">
+        <div class="story__header">
+            <progress-line
+                    :active-line="activeStory"
+                    @onFinish="activeStory && btnsShown.includes('next') ? $emit('onNextSlide') :
+                     !btnsShown.includes('next') && activeStory ? $emit('goFirstSlide') : null"
+            />
+            <avatar
+                    :title="titleStory"
+                    :src="avatarSrc"
+                    :alt="titleStory+' icon'"
+            />
+        </div>
+        <div class="story__desc">
+            <div class="story__content"  v-if="texts">
+                <p class="story__text" v-html="texts" />
+            </div>
+            <div v-else-if="loadingSpinner" class="spinner">
+                <icon name="spinner" />
+            </div>
+            <placeholder v-else :amount="2"/>
+        </div>
+        <div class="story__footer">
+            <x-button :defaultText="defaultText" :hoverText="hoverText" />
+        </div>
+
+        <div v-if="activeStory">
+            <a v-if="btnsShown.includes('prev')" href="#" class="btn btn-prev" @click.prevent="$emit('onPrevSlide')">
+                <icon name="arrowSlide" />
+            </a>
+            <a v-if="btnsShown.includes('next')" href="#" class="btn btn-next" @click.prevent="$emit('onNextSlide')">
+                <icon name="arrowSlide" />
+            </a>
+        </div>
     </div>
-    <div class="story__desc">
-        <img src="../../assets/img/story__img.jpg" alt="story image">
-        <p v-for="(n, i) in texts" :key="n" class="story__text">
-            <span class="bold" v-if="i === 0">{{boldText}}</span>
-            {{n}}
-        </p>
-    </div>
-    <div class="story__footer">
-<!--        <x-button :defaultText="defaultText" :hoverText="hoverText" ></x-button>-->
-        <slot :defaultText="defaultText" :hoverText="hoverText"></slot>
-<!--        <button>Button</button>-->
-    </div>
-</div>
+</li>
