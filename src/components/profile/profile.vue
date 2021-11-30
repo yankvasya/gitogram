@@ -8,7 +8,7 @@
       </li>
       <li class="menu__item profile" >
         <a href="#" class="menu__link" @click.prevent="emitProfileClick" aria-label="profile link">
-          <img src="../../assets/img/Photo.png" alt="profile-img" class="profile-img">
+          <img :src="profileImg" alt="profile-img" class="profile-img">
         </a>
       </li>
       <li class="menu__item">
@@ -27,6 +27,9 @@ export default {
   name: 'profile',
   components: {
     icon
+  },
+  props: {
+    profileImg: String
   },
   emits: ['onFinish', 'homeClick', 'logoutClick', 'profileClick'],
   methods: {

@@ -22,9 +22,7 @@
 <script>
 import icon from '../../icons/icon'
 import xButton from '../../components/button/button'
-
-const clientId = 'be26530e754b96676558'
-const clientSecret = 'ae948450f628a5f6a881fb6a77bbd2f5df65e02f'
+import env from '../../../env'
 
 export default {
   name: 'Auth',
@@ -38,7 +36,7 @@ export default {
 
       const params = new URLSearchParams()
 
-      params.append('client_id', clientId)
+      params.append('client_id', env.clientId)
       params.append('scope', 'repo:status read:user')
 
       window.location.href = `${githubAuthApi}?${params}`
@@ -55,7 +53,9 @@ export default {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            clientId, code, clientSecret
+            clientId: env.clientId,
+            code: env.code,
+            clientSecret: env.clientSecret
           })
         })
 
