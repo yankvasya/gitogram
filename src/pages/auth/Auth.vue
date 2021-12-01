@@ -54,7 +54,7 @@ export default {
           },
           body: JSON.stringify({
             clientId: env.clientId,
-            code: env.code,
+            code: code,
             clientSecret: env.clientSecret
           })
         })
