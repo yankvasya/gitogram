@@ -30,7 +30,8 @@ export default {
   methods: {
     ...mapActions({
       fetchRepositories: 'repositories/fetchRepositories',
-      fetchReadme: 'readme/fetchReadme'
+      fetchReadme: 'readme/fetchReadme',
+      starRepo: 'repositories/starRepo'
     }),
     moveSlider (slideNdx) {
       const { slider, item } = this.$refs

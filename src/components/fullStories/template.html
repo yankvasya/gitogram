@@ -25,7 +25,7 @@
             <x-button
                     :defaultText="defaultText"
                     :hoverText="hoverText"
-                    disabled
+                    @click="$emit('onFollow', id)"
             />
         </div>
         <div v-if="activeStory">

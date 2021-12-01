@@ -11,7 +11,8 @@ export default {
       description: 'if button was clicked'
     },
     control: { type: 'text' },
-    loading: { type: 'boolean' }
+    loading: { type: 'boolean' },
+    disabled: { type: 'boolean' }
   }
 }
 
@@ -25,7 +26,7 @@ export const defaultViewButton = (args) => ({
   template: `
     <x-button
       v-bind="args"
-      @onClick="args.buttonClick"
+      @click="args.buttonClick"
     />
   `
 })
@@ -33,7 +34,8 @@ export const defaultViewButton = (args) => ({
 defaultViewButton.args = {
   defaultText: 'Follow',
   hoverText: 'Unfollow',
-  loading: true
+  loading: false,
+  disabled: false
 }
 
 defaultViewButton.story = {

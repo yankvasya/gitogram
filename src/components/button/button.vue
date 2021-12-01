@@ -1,6 +1,5 @@
 <template>
-  <div v-if="disabled" class="button disabled">{{defaultText}}</div>
-  <a v-else href="#" class="button" @click.prevent="loading || $emit('buttonClicked')" :class="{loading}">
+  <a href="#" class="button" @click.prevent :class="{loading, disabled}">
     <div v-if="loading" class="button__loading">
       <icon name="imgSpinner" />
     </div>
@@ -23,7 +22,7 @@ export default {
     loading: Boolean,
     disabled: Boolean
   },
-  emits: ['buttonClicked'],
+  emits: ['onClick'],
   components: {
     icon
   }

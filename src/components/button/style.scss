@@ -48,6 +48,8 @@ $button-grey: #9E9E9E;
 
   &.disabled {
     background: $button-grey;
+    pointer-events: none;
+    user-select: none;
   }
 
   &:hover {

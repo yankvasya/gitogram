@@ -31,6 +31,9 @@ export default {
       } finally {
         commit('SET_REPO_LOADING', false)
       }
+    },
+    async starRepo (state, id) {
+      console.log(id, ' - текущее ID слайда')
     }
   }
 }
