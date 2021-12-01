@@ -20,6 +20,7 @@ export default [
   },
   {
     path: '/auth',
-    component: Auth
+    component: Auth,
+    name: 'auth'
   }
 ]
