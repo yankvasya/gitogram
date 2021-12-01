@@ -7,16 +7,39 @@ export default {
     loading: false,
     error: false
   },
-  getters: {},
+  getters: {
+    getRepoById: (state) => (id) => state.data.find(item => item.id === id)
+  },
   mutations: {
     SET_REPO_DATA (state, payload) {
-      state.data = payload
+      state.data = payload.map(item => {
+        item.following = {
+          status: false,
+          loading: false,
+          error: ''
+        }
+
+        return item
+      })
     },
     SET_REPO_LOADING (state, payload) {
       state.loading = payload
     },
     SET_REPO_ERROR (state, payload) {
       state.error = payload
+    },
+    SET_FOLLOWING (state, payload) {
+      state.data = state.data.map(repo => {
+        if (payload.id === repo.id) {
+          console.log('Нашелся элемент с ID текущего слайда')
+          repo.following = {
+            ...repo.following,
+            ...payload.data
+          }
+        }
+
+        return repo
+      })
     }
   },
   actions: {
@@ -32,8 +55,18 @@ export default {
         commit('SET_REPO_LOADING', false)
       }
     },
-    async starRepo (state, id) {
-      console.log(id, ' - текущее ID слайда')
+    async starRepo ({ commit, getters }, id) {
+      const { owner, name: repo } = getters.getRepoById(id)
+      console.log(owner)
+      console.log(repo)
+      commit('SET_FOLLOWING', {
+        id,
+        data: {
+          status: false,
+          loading: true,
+          error: ''
+        }
+      })
     }
   }
 }

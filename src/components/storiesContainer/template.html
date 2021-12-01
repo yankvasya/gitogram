@@ -8,6 +8,7 @@
                         v-for="(n,i) in repos.data"
                         :key="n.id"
                         :id="n.id"
+                        :button-loading="n.following.loading"
                         :default-text="defaultText"
                         :hover-text="hoverText"
                         :title-story="n.owner.login"

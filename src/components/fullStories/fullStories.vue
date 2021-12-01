@@ -22,7 +22,8 @@ export default {
       default: () => ['next', 'prev'],
       validator: v => v.every(e => e === 'next' || e === 'prev')
     },
-    id: Number
+    id: Number,
+    buttonLoading: Boolean
   },
   emits: ['onFinish', 'onPrevSlide', 'onNextSlide', 'goFirstSlide', 'onFollow'],
   components: {
