@@ -46,6 +46,10 @@ $button-grey: #9E9E9E;
     animation: spinner-loading $img-spinner-time linear infinite;
   }
 
+  &.disabled {
+    background: $button-grey;
+  }
+
   &:hover {
     background: $button-grey;
     transition: background-color .3s;

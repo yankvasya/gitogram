@@ -22,9 +22,12 @@
             <placeholder v-else :amount="2"/>
         </div>
         <div class="story__footer">
-            <x-button :defaultText="defaultText" :hoverText="hoverText" />
+            <x-button
+                    :defaultText="defaultText"
+                    :hoverText="hoverText"
+                    disabled
+            />
         </div>
-
         <div v-if="activeStory">
             <a v-if="btnsShown.includes('prev')" href="#" class="btn btn-prev" @click.prevent="$emit('onPrevSlide')">
                 <icon name="arrowSlide" />
