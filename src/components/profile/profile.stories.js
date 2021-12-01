@@ -6,13 +6,14 @@ export default {
     profile
   },
   argTypes: {
+    profileImg: { type: 'text' },
     clickProfile: {
       action: 'clickProfile',
       description: 'triggered when there was a click on the profile'
     },
     logoutClick: {
       action: 'logoutClick',
-      description: 'triggered when exiting a profile'
+      desc: 'triggered when exiting a profile'
     },
     homeClick: {
       action: 'homeClick',
@@ -30,6 +31,7 @@ export const defaultViewProfile = (args) => ({
   },
   template: `
     <profile
+      v-bind="args"
       @homeClick="args.homeClick"
       @logoutClick="args.logoutClick"
       @profileClick="args.clickProfile"
@@ -38,12 +40,7 @@ export const defaultViewProfile = (args) => ({
 })
 
 defaultViewProfile.args = {
-  titleStory: 'React.reposit',
-  defaultText: 'Follow',
-  hoverText: 'Unfollow',
-  loadingSpinner: false,
-  activeStory: false,
-  avatarSrc: 'https://cdn.pixabay.com/photo/2021/01/24/19/05/crane-5946169_960_720.jpg'
+  profileImg: 'https://cdn-icons-png.flaticon.com/512/64/64572.png'
 }
 
 defaultViewProfile.story = {

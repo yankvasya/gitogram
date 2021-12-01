@@ -4,15 +4,12 @@
     <slot name="post" />
   </ul>
 </div>
-
 </template>
 
 <script>
-import posts from '../../components/posts/posts'
 
 export default {
-  name: 'postsContainer',
-  components: posts
+  name: 'postsContainer'
 }
 </script>
 
