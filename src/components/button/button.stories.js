@@ -10,7 +10,8 @@ export default {
       action: 'button click',
       description: 'if button was clicked'
     },
-    control: { type: 'text' }
+    control: { type: 'text' },
+    loading: { type: 'boolean' }
   }
 }
 
@@ -31,7 +32,8 @@ export const defaultViewButton = (args) => ({
 
 defaultViewButton.args = {
   defaultText: 'Follow',
-  hoverText: 'Unfollow'
+  hoverText: 'Unfollow',
+  loading: true
 }
 
 defaultViewButton.story = {

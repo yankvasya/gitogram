@@ -1,9 +1,22 @@
+@keyframes spinner-loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+$img-spinner-time: 1s;
+$button-grey: #9E9E9E;
+
 .button {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 270px;
-  min-height: 44px;
+  height: 44px;
   padding: 11px 0;
 
   font-style: normal;
@@ -21,8 +34,20 @@
     display: none;
   }
 
+  &.loading {
+    background: $button-grey;
+    cursor: wait;
+  }
+
+  &__loading {
+    width: 24px;
+    height: 24px;
+
+    animation: spinner-loading $img-spinner-time linear infinite;
+  }
+
   &:hover {
-    background: #9E9E9E;
+    background: $button-grey;
     transition: background-color .3s;
 
     & .default-text {
