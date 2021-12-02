@@ -7,8 +7,11 @@
         </a>
       </li>
       <li class="menu__item profile" >
-        <a href="#" class="menu__link" @click.prevent="emitProfileClick" aria-label="profile link">
-          <img :src="profileImg" alt="profile-img" class="profile-img">
+        <div v-show="!isImgLoaded" class="profile__loading">
+          <icon name="imgSpinner" />
+        </div>
+        <a v-show="isImgLoaded" href="#" class="menu__link" @click.prevent="emitProfileClick" aria-label="profile link">
+          <img :src="profileImg" :alt="profileAlt" class="profile__img" @load="profileImgLoaded">
         </a>
       </li>
       <li class="menu__item">
@@ -28,8 +31,15 @@ export default {
   components: {
     icon
   },
+  data () {
+    return {
+      isImgLoaded: false
+    }
+  },
   props: {
-    profileImg: String
+    profileImg: String,
+    imgLoading: Boolean,
+    profileAlt: String
   },
   emits: ['onFinish', 'homeClick', 'logoutClick', 'profileClick'],
   methods: {
@@ -41,6 +51,9 @@ export default {
     },
     emitProfileClick () {
       this.$emit('profileClick')
+    },
+    profileImgLoaded () {
+      this.isImgLoaded = true
     }
   }
 }

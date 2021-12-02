@@ -4,7 +4,11 @@
       <template #topMenu>
         <topMenu >
           <template #rightMenu>
-            <profile profile-img="https://cdn-icons-png.flaticon.com/512/64/64572.png" />
+            <profile
+              :profile-img="user.data?.avatar_url"
+              :img-loading="user.loading"
+              :profileAlt="user.data?.name"
+            />
           </template>
         </topMenu>
       </template>
@@ -16,7 +20,7 @@
   </header>
 
   <main>
-<!--    <pre>{{user.data}}</pre>-->
+<!--    <pre>{{user}}</pre>-->
     <posts-container>
       <template #post>
         <div v-if="repos.loading">loading repositories...</div>
@@ -69,7 +73,8 @@ export default {
     ...mapActions({
       fetchRepositories: 'repositories/fetchRepositories',
       fetchIssues: 'issues/fetchIssues',
-      fetchUser: 'user/fetchUser'
+      fetchUser: 'user/fetchUser',
+      fetchUserRepos: 'user/fetchUserRepos'
     })
   },
   computed: {
@@ -82,7 +87,8 @@ export default {
   async created () {
     await this.fetchRepositories()
     await this.fetchIssues(this.repos)
-    await this.fetchUser(localStorage.getItem('token'))
+    await this.fetchUser()
+    await this.fetchUserRepos()
   }
 }
 </script>
