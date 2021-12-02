@@ -1,7 +1,7 @@
 import xButton from './button'
 
 export default {
-  title: 'button',
+  title: 'xButton',
   components: {
     xButton
   },
@@ -16,7 +16,7 @@ export default {
   }
 }
 
-export const defaultViewButton = (args) => ({
+export const DefaultViewButton = (args) => ({
   components: { xButton },
   data () {
     return {
@@ -31,13 +31,13 @@ export const defaultViewButton = (args) => ({
   `
 })
 
-defaultViewButton.args = {
+DefaultViewButton.args = {
   defaultText: 'Follow',
   hoverText: 'Unfollow',
   loading: false,
   disabled: false
 }
 
-defaultViewButton.story = {
+DefaultViewButton.story = {
   name: 'Стандартный вид'
 }

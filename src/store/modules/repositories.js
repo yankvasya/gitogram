@@ -31,7 +31,6 @@ export default {
     SET_FOLLOWING (state, payload) {
       state.data = state.data.map(repo => {
         if (payload.id === repo.id) {
-          console.log('Нашелся элемент с ID текущего слайда')
           repo.following = {
             ...repo.following,
             ...payload.data
@@ -57,8 +56,6 @@ export default {
     },
     async starRepo ({ commit, getters }, id) {
       const { owner, name: repo } = getters.getRepoById(id)
-      console.log(owner)
-      console.log(repo)
       commit('SET_FOLLOWING', {
         id,
         data: {
@@ -67,6 +64,67 @@ export default {
           error: ''
         }
       })
+
+      try {
+        await api.starred.starRepo({ owner: owner.login, repo })
+        commit('SET_FOLLOWING', {
+          id,
+          data: {
+            status: true
+          }
+        })
+      } catch (e) {
+        commit('SET_FOLLOWING', {
+          id,
+          data: {
+            status: false,
+            error: e.message
+          }
+        })
+      } finally {
+        commit('SET_FOLLOWING', {
+          id,
+          data: {
+            loading: false
+          }
+        })
+      }
+    },
+    async unStarRepo ({ commit, getters }, id) {
+      const { owner, name: repo } = getters.getRepoById(id)
+      commit('SET_FOLLOWING', {
+        id,
+        data: {
+          status: false,
+          loading: true,
+          error: ''
+        }
+      })
+
+      try {
+        await api.starred.unStarRepo({ owner: owner.login, repo })
+        commit('SET_FOLLOWING', {
+          id,
+          data: {
+            status: true
+          }
+        })
+      } catch (e) {
+        commit('SET_FOLLOWING', {
+          id,
+          data: {
+            status: false,
+            error: e.message
+          }
+        })
+      } finally {
+        commit('SET_FOLLOWING', {
+          id,
+          data: {
+            loading: false
+          }
+        })
+      }
     }
   }
 }

@@ -9,8 +9,8 @@
                         :key="n.id"
                         :id="n.id"
                         :button-loading="n.following.loading"
-                        :default-text="defaultText"
-                        :hover-text="hoverText"
+                        :follow-status="n.following.status"
+                        :follow-error="n.following.error"
                         :title-story="n.owner.login"
                         :loading-spinner="i === slideNdx && readme.loading"
                         :btnsShown="activeBtns"
@@ -21,6 +21,7 @@
                         @onPrevSlide="handleSlide(slideNdx - 1)"
                         @goFirstSlide="handleSlide(0)"
                         @onFollow="starRepo"
+                        @unFollow="unStarRepo"
                 />
             </ul>
         </div>

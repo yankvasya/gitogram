@@ -30,10 +30,6 @@ $button-grey: #9E9E9E;
   border-radius: 5px;
   transition: background-color .3s, width 2.7s;
 
-  & .hover-text {
-    display: none;
-  }
-
   &.loading {
     background: $button-grey;
     cursor: wait;
@@ -55,13 +51,5 @@ $button-grey: #9E9E9E;
   &:hover {
     background: $button-grey;
     transition: background-color .3s;
-
-    & .default-text {
-      display: none;
-    }
-
-    & .hover-text {
-      display: inline;
-    }
   }
 }

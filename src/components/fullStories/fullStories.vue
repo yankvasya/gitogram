@@ -12,8 +12,6 @@ export default {
   props: {
     texts: String,
     titleStory: String,
-    defaultText: String,
-    hoverText: String,
     loadingSpinner: Boolean,
     activeStory: Boolean,
     avatarSrc: String,
@@ -23,9 +21,11 @@ export default {
       validator: v => v.every(e => e === 'next' || e === 'prev')
     },
     id: Number,
-    buttonLoading: Boolean
+    buttonLoading: Boolean,
+    followError: String,
+    followStatus: Boolean
   },
-  emits: ['onFinish', 'onPrevSlide', 'onNextSlide', 'goFirstSlide', 'onFollow'],
+  emits: ['onFinish', 'onPrevSlide', 'onNextSlide', 'goFirstSlide', 'onFollow', 'unFollow'],
   components: {
     progressLine,
     avatar,

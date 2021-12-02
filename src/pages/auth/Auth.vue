@@ -8,7 +8,7 @@
         class="auth__button"
         default-text="Authorize with github"
         hover-text="Authorize with github"
-        @onClick="getCode"
+        @click="getCode"
       >
         <div class="auth__mark">
           <icon name="markGithub" />

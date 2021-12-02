@@ -5,7 +5,6 @@
     </div>
     <div v-else>
       <span class="default-text">{{defaultText}}</span>
-      <span class="hover-text">{{hoverText}}</span>
     </div>
     <slot />
   </a>
@@ -18,11 +17,9 @@ export default {
   name: 'xButton',
   props: {
     defaultText: String,
-    hoverText: String,
     loading: Boolean,
     disabled: Boolean
   },
-  emits: ['onClick'],
   components: {
     icon
   }

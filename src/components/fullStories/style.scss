@@ -111,6 +111,11 @@ $loading-speed: .8s;
     position: sticky;
     bottom: 0;
     border-top: 1px solid #CACACA;
+
+    .error {
+      position: absolute;
+      bottom: 5px;
+    }
   }
 }
 

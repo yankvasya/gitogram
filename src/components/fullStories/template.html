@@ -24,10 +24,11 @@
         <div class="story__footer">
             <x-button
                     :loading="buttonLoading"
-                    :defaultText="defaultText"
-                    :hoverText="hoverText"
-                    @click="$emit('onFollow', id)"
+                    :default-text="followStatus ? 'Unfollow' : 'Follow'"
+                    @click="$emit(followStatus ? 'Unfollow' : 'onFollow', id)"
             />
+
+            <pre class="error">{{followError}}</pre>
         </div>
         <div v-if="activeStory">
             <a v-if="btnsShown.includes('prev')" href="#" class="btn btn-prev" @click.prevent="$emit('onPrevSlide')">
