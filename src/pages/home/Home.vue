@@ -10,6 +10,7 @@
       </template>
       <template #stories>
         <stories v-for="n in repos.data" :username="n.owner?.login" :key="n" :stories-img="n.owner?.avatar_url" :id="n.id"/>
+<!--        <stories v-for="n in getUnstarredOnly" :username="n.owner?.login" :key="n" :stories-img="n.owner?.avatar_url" :id="n.id"/>-->
       </template>
     </top>
   </header>
@@ -47,7 +48,7 @@ import post from '../../components/posts/posts'
 import postsContainer from '../../components/postsContainer/postsContainer'
 import profile from '../../components/profile/profile'
 
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'Home',
@@ -75,7 +76,8 @@ export default {
     ...mapState({
       repos: state => state.repositories,
       user: state => state.user
-    })
+    }),
+    ...mapGetters(['getUnstarredOnly'])
   },
   async created () {
     await this.fetchRepositories()
