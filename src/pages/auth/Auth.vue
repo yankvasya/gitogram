@@ -62,7 +62,7 @@ export default {
         const { token } = await response.json()
 
         localStorage.setItem('token', token)
-        await this.$router.replace('/')
+        window.location.href = '/#/'
       } catch (e) {
         console.warn(e)
       }

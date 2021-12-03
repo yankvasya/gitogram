@@ -15,7 +15,7 @@
         </a>
       </li>
       <li class="menu__item">
-        <a href="#" class="menu__link" @click.prevent="emitLogoutClick" aria-label="logout link">
+        <a href="#" class="menu__link" @click.prevent="profileLogout" aria-label="logout link">
           <icon name="logout" />
         </a>
       </li>
@@ -41,19 +41,20 @@ export default {
     imgLoading: Boolean,
     profileAlt: String
   },
-  emits: ['onFinish', 'homeClick', 'logoutClick', 'profileClick'],
+  emits: ['onFinish', 'homeClick', 'profileClick'],
   methods: {
     emitHomeClick () {
       this.$emit('homeClick')
-    },
-    emitLogoutClick () {
-      this.$emit('logoutClick')
     },
     emitProfileClick () {
       this.$emit('profileClick')
     },
     profileImgLoaded () {
       this.isImgLoaded = true
+    },
+    profileLogout () {
+      localStorage.removeItem('token')
+      window.location.reload()
     }
   }
 }

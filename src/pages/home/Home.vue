@@ -23,7 +23,7 @@
 <!--    <pre>{{user}}</pre>-->
     <posts-container>
       <template #post>
-        <div v-if="repos.loading">loading repositories...</div>
+        <div v-if="repos.loading && !repos.data">loading repositories...</div>
         <div v-else-if="repos.error">{{repos.error}}</div>
         <post
           v-for="n in repos.data"
