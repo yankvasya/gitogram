@@ -3,14 +3,14 @@ import axios from 'axios'
 const baseURL = 'https://api.github.com'
 
 export const makeRequest = ({
-  url, method = 'get', data = {}, headers = {}
+  url, method = 'get', data = {}, withBaseUrl = true, headers = {}
 }) => axios({
   url,
   method,
   data,
-  baseURL,
+  baseURL: withBaseUrl ? baseURL : '',
   headers: {
-    ...headers,
-    Authorization: `token ${localStorage.getItem('token')}`
+    Authorization: `token ${localStorage.getItem('token')}`,
+    ...headers
   }
 })
