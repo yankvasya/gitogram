@@ -2,7 +2,7 @@
 
 <script>
 import issue from '../../components/issue/issue'
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
 import placeholder from '../../components/placeholder/placeholder'
 
 export default {
@@ -10,23 +10,37 @@ export default {
   props: {
     frameworkName: String,
     issue: String,
-    num: Number
+    num: Number,
+    issueUsername: String
   },
   methods: {
     ...mapActions({
       fetchIssues: 'issues/fetchIssues'
     }),
-    hideShow () {
+    async hideShow () {
       this.isShow = !this.isShow
       this.$emit('change', `${!this.isShow ? 'Hide' : 'Show'}`)
+      this.currentIssues = true
+      await this.getIssues()
+      this.currentIssues = false
     },
     async returnData (item) {
       return item.data
+    },
+    async takeIssues (name) {
+      const data = this.checkStateByRepo(name)
+      console.log(data)
+      return data
+    },
+    async getIssues () {
+      const data = { owner: this.issueUsername, repo: this.frameworkName }
+      await this.fetchIssues(data)
     }
   },
   data () {
     return {
-      isShow: false
+      isShow: false,
+      currentIssues: false
     }
   },
   components: {
@@ -37,6 +51,9 @@ export default {
     ...mapState({
       repos: state => state.repositories,
       issues: state => state.issues
+    }),
+    ...mapGetters({
+      checkStateByRepo: 'issues/checkStateByRepo'
     })
   }
 }

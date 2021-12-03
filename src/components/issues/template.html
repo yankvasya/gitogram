@@ -1,25 +1,24 @@
 <div class="issues">
-    <a href="#" :class="isShow ? 'toggler' : 'toggler show'" @click.prevent="hideShow">
+    <a href="#" :class="isShow ? 'toggler' : 'toggler show'" @click.prevent="!issues.loading ? hideShow() : ''">
         <div class="toggler__title">{{isShow ? 'Hide' : 'Show'}} issues</div>
         <img src="../../assets/icons/toggler.svg" alt="toggler" class="toggler__arrow">
     </a>
 
     <div class="issues__content" v-if="isShow">
-        <div v-if="issues.loading">
+        <div v-if="issues.loading && currentIssues">
             <placeholder :amount="1" />
         </div>
         <div v-else-if="issues.error">{{issues.error}}</div>
 
-        <ul class="issues__content loaded" v-else>
-            <li v-for="(n, i) in repos.data" :key="n">
-                <issue
-                        v-if="issues.data && frameworkName === n.name"
-                        v-for="n of issues.data[i]"
-                        :key="n"
-                        :username="n.user.login"
-                        :issue="n.title"
-                />
-            </li>
+        <ul v-else
+            class="issues__content loaded"
+        >
+            <issue
+                    v-for="i in checkStateByRepo(frameworkName)"
+                    :key="i"
+                    :username="i.user.login"
+                    :issue="i.title"
+            />
         </ul>
     </div>
 </div>

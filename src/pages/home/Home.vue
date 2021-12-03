@@ -86,7 +86,7 @@ export default {
   },
   async created () {
     await this.fetchRepositories()
-    await this.fetchIssues(this.repos)
+    // await this.fetchIssues(this.repos)
     await this.fetchUser()
     await this.fetchUserRepos()
   }
