@@ -17,8 +17,6 @@
     </header>
 
     <stories-container
-      default-text="Follow"
-      hover-text="Unfollow"
     />
   </div>
 

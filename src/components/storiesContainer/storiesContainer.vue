@@ -22,15 +22,15 @@ export default {
   props: {
     texts: String,
     titleStory: String,
-    defaultText: String,
-    hoverText: String,
     loadingSpinner: Boolean,
     avatarSrc: String
   },
   methods: {
     ...mapActions({
       fetchRepositories: 'repositories/fetchRepositories',
-      fetchReadme: 'readme/fetchReadme'
+      fetchReadme: 'readme/fetchReadme',
+      starRepo: 'repositories/starRepo',
+      unStarRepo: 'repositories/unStarRepo'
     }),
     moveSlider (slideNdx) {
       const { slider, item } = this.$refs

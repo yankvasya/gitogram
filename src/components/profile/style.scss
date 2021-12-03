@@ -1,3 +1,23 @@
+@keyframes spinner-loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@mixin menu-link {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+$img-spinner-time: .8s;
+
 .menu {
   width: 145px;
   padding: 0 4px;
@@ -11,11 +31,7 @@
   &__item {
     &.profile {
       .menu__link {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 3;
+        @include menu-link;
 
         &:before {
           cursor: pointer;
@@ -36,6 +52,15 @@
             height: 37px;
             transition: all .4s;
           }
+        }
+      }
+
+      .profile__loading {
+        @include menu-link;
+
+        svg {
+          height: 37px;
+          width: 37px;
         }
       }
     }
@@ -60,9 +85,18 @@
       }
     }
 
-    .profile-img {
+    .profile__img {
       width: 37px;
       height: 37px;
+      border-radius: 50%;
+    }
+
+
+  }
+
+  .profile {
+    &__loading {
+    animation: spinner-loading $img-spinner-time linear infinite;
     }
   }
 }

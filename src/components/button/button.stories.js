@@ -1,49 +1,43 @@
 import xButton from './button'
-import { withKnobs, text } from '@storybook/addon-knobs'
-// import { action } from '@storybook/addon-actions'
-//
-// const methods = {
-//   onChange: action('onChange')
-// }
 
 export default {
-  title: 'button',
+  title: 'xButton',
   components: {
     xButton
   },
-  decorators: [withKnobs],
   argTypes: {
-    control: { type: 'text' }
+    buttonClick: {
+      action: 'button click',
+      description: 'if button was clicked'
+    },
+    control: { type: 'text' },
+    loading: { type: 'boolean' },
+    disabled: { type: 'boolean' }
   }
 }
 
-export const defaultViewButton = (args) => ({
+export const DefaultViewButton = (args) => ({
   components: { xButton },
   data () {
     return {
       args
     }
   },
-  props: {
-    defaultText: {
-      default: text('Default text', 'Follow')
-    },
-    hoverText: {
-      default: text('Hover text', 'Unfollow')
-    }
-  },
   template: `
     <x-button
       v-bind="args"
+      @click="args.buttonClick"
     />
   `
 })
 
-defaultViewButton.args = {
+DefaultViewButton.args = {
   defaultText: 'Follow',
-  hoverText: 'Unfollow'
+  hoverText: 'Unfollow',
+  loading: false,
+  disabled: false
 }
 
-defaultViewButton.story = {
+DefaultViewButton.story = {
   name: 'Стандартный вид'
 }

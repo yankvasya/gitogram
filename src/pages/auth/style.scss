@@ -1,0 +1,40 @@
+.auth {
+  padding-left: 200px;
+  height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  svg {
+    width: 200px;
+  }
+
+  &__content {
+    width: 256px;
+    margin-top: 24px;
+  }
+
+  &__text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 28px;
+    color: #6F6F6F;
+  }
+
+  &__button {
+    width: 256px;
+    margin-top: 54px;
+  }
+
+  &__mark {
+    display: flex;
+    align-items: center;
+    margin-left: 12.5px;
+    svg {
+      color: #FFF;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

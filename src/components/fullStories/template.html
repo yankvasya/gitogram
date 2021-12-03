@@ -22,9 +22,14 @@
             <placeholder v-else :amount="2"/>
         </div>
         <div class="story__footer">
-            <x-button :defaultText="defaultText" :hoverText="hoverText" />
-        </div>
+            <x-button
+                    :loading="buttonLoading"
+                    :default-text="followStatus ? 'Unfollow' : 'Follow'"
+                    @click="$emit(followStatus ? 'Unfollow' : 'onFollow', id)"
+            />
 
+            <pre class="error">{{followError}}</pre>
+        </div>
         <div v-if="activeStory">
             <a v-if="btnsShown.includes('prev')" href="#" class="btn btn-prev" @click.prevent="$emit('onPrevSlide')">
                 <icon name="arrowSlide" />

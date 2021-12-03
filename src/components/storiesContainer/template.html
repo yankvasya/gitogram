@@ -7,8 +7,10 @@
                 <full-stories
                         v-for="(n,i) in repos.data"
                         :key="n.id"
-                        :default-text="defaultText"
-                        :hover-text="hoverText"
+                        :id="n.id"
+                        :button-loading="n.following.loading"
+                        :follow-status="n.following.status"
+                        :follow-error="n.following.error"
                         :title-story="n.owner.login"
                         :loading-spinner="i === slideNdx && readme.loading"
                         :btnsShown="activeBtns"
@@ -18,6 +20,8 @@
                         @onNextSlide="handleSlide(slideNdx + 1)"
                         @onPrevSlide="handleSlide(slideNdx - 1)"
                         @goFirstSlide="handleSlide(0)"
+                        @onFollow="starRepo"
+                        @unFollow="unStarRepo"
                 />
             </ul>
         </div>

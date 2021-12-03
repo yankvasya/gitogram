@@ -24,6 +24,15 @@ $loading-speed: .8s;
   background: #FFFFFF;
   opacity: .3;
 
+
+  & > * {
+    user-select: none;
+  }
+
+  .button {
+    pointer-events: none;
+  }
+
   &-container {
     transform: scale(0.8);
     transition: all .3s;
@@ -36,8 +45,20 @@ $loading-speed: .8s;
 
   &.active {
     opacity: 1;
-
     transition: all .5s;
+
+    & > * {
+      user-select: all;
+    }
+
+    .button {
+      pointer-events: all;
+    }
+
+    .story__desc {
+      padding:0 15px 24px 18px;
+      overflow: auto;
+    }
   }
 
   &__header {
@@ -54,8 +75,8 @@ $loading-speed: .8s;
   }
 
   &__desc {
-    overflow-y: auto;
-    padding:0 15px 24px 18px;
+    padding:0 25px 24px 18px;
+    overflow: hidden;
 
     .spinner {
       display: flex;
@@ -90,6 +111,11 @@ $loading-speed: .8s;
     position: sticky;
     bottom: 0;
     border-top: 1px solid #CACACA;
+
+    .error {
+      position: absolute;
+      bottom: 5px;
+    }
   }
 }
 

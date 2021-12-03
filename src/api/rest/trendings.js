@@ -25,10 +25,13 @@ export const getTrendings = (lang = 'javascript') => {
 
 // https://api.github.com/repos/bradtraversy/website-accessibility-tester/issues
 
-export const getIssues = (url) => {
+export const getIssues = ({ owner, repo }) => {
   return makeRequest({
-    url: `${url}`
+    url: `/repos/${owner}/${repo}/issues`
   })
+  // return makeRequest({
+  //   url: `${url}`
+  // })
 }
 
 export const getReadme = ({ owner, repo }) => {

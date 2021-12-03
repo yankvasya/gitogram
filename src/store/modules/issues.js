@@ -3,14 +3,18 @@ import * as api from '../../api'
 export default {
   namespaced: true,
   state: {
-    data: null,
+    data: [],
     loading: false,
     error: false
   },
-  getters: {},
+  getters: {
+    checkStateByRepo: (state) => (repo) => {
+      return state.data.flatMap(all => all.filter(repos => repos.repository_url?.includes(repo)))
+    }
+  },
   mutations: {
     SET_ISSUES_DATA (state, payload) {
-      state.data = payload
+      state.data.push(payload)
     },
     SET_ISSUES_LOADING (state, payload) {
       state.loading = payload
@@ -20,18 +24,17 @@ export default {
     }
   },
   actions: {
-    async fetchIssues ({ commit }, payload) {
+    async fetchIssues ({ state, commit, getters }, payload) {
+      const stateHaveIssues = getters.checkStateByRepo(payload.repo)
+
+      if (stateHaveIssues.length) {
+        return
+      }
+
       commit('SET_ISSUES_ERROR', '')
       commit('SET_ISSUES_LOADING', true)
       try {
-        const data = []
-        for (const el of payload.data) {
-          const i = payload.data.indexOf(el)
-          data[i] =
-            el.open_issues_count
-              ? (await api.trandings.getIssues(el.issues_url.split('{/number}').join(''))).data
-              : []
-        }
+        const { data } = await api.trandings.getIssues(payload)
         commit('SET_ISSUES_DATA', data)
       } catch (e) {
         commit('SET_ISSUES_ERROR', 'Не удалось получить данные')
