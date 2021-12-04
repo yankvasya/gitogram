@@ -7,12 +7,15 @@ export default {
   },
   argTypes: {
     amount: {
-      control: { type: 'range' }
+      control: { type: 'range', min: 1, max: 10 }
+    },
+    rows: {
+      control: { type: 'range', min: 0, max: 3 }
     }
   }
 }
 
-export const defaultViewPlaceholder = (args) => ({
+export const DefaultViewPlaceholder = (args) => ({
   components: { placeholder },
   data () {
     return {
@@ -28,10 +31,11 @@ export const defaultViewPlaceholder = (args) => ({
   `
 })
 
-defaultViewPlaceholder.args = {
-  amount: 2
+DefaultViewPlaceholder.args = {
+  amount: 2,
+  rows: 3
 }
 
-defaultViewPlaceholder.story = {
+DefaultViewPlaceholder.story = {
   name: 'Стандартный вид'
 }
