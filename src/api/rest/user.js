@@ -5,5 +5,13 @@ export const getUserData = () => makeRequest({
 })
 
 export const getUserRepos = (owner) => makeRequest({
-  url: `/user/${owner}/repos`
+  url: `/users/${owner}/repos`
+})
+
+export const getUserFollowing = (owner) => makeRequest({
+  url: `users/${owner}/following`
+})
+
+export const getUserFollowers = (owner) => makeRequest({
+  url: `/users/${owner}/followers`
 })

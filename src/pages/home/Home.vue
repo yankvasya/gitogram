@@ -25,7 +25,7 @@
 
   <main>
 <!--    <pre>{{user}}</pre>-->
-    <posts-container>
+    <posts-container class="container posts-container">
       <template #post>
         <div v-if="repos.loading && !repos.data">loading repositories...</div>
         <div v-else-if="repos.error">{{repos.error}}</div>

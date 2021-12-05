@@ -1,5 +1,5 @@
 <li class="post">
-    <div class="post__author">
+    <div class="post__author" v-if="postImg">
         <div class="post__img loading" v-if="!isImgLoaded">
            <icon name="imgSpinner" />
         </div>
@@ -26,5 +26,5 @@
             :issue-username="username"
     />
 
-    <time class="post__date">{{numMonth}} {{month}}</time>
+    <time class="post__date" v-if="month && numMonth">{{numMonth}} {{month}}</time>
 </li>

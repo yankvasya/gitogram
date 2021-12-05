@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div>
   <ul class="posts">
     <slot name="post" />
   </ul>

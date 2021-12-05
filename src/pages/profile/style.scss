@@ -31,6 +31,24 @@ header {
   flex:1;
   padding-top: 40px;
 
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__change {
+    text-decoration-line: underline;
+    color: #887337;
+    transition: color .5s;
+    padding-right: 5px;
+
+    &:hover {
+      color: #d2a134;
+      transition: color .5s;
+    }
+  }
+
   &__title {
     font-style: normal;
     font-weight: bold;
@@ -49,6 +67,20 @@ header {
     height: 90px;
     width: 90px;
     border-radius: 50%;
+
+   &.loading {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background: #9E9E9E;
+
+     svg {
+       width: 45px;
+       height: 45px;
+       color: #FFF;
+       animation: spinner-loading $img-spinner-time linear infinite;
+     }
+   }
   }
 
   &__description {
@@ -73,6 +105,7 @@ header {
   &__reposts {
     @include statistic-text;
 
+    margin-right: 10px;
     font-weight: 500;
     color: #404040;
   }
@@ -85,6 +118,7 @@ header {
 
   .watchers {
     @include statistic-text;
+    margin-left: 4px;
 
     font-weight: normal;
     text-decoration-line: underline;
@@ -116,7 +150,7 @@ header {
   }
 }
 
-.followings {
+.my-repositories, .followings {
   flex: 2;
   padding: 40px 0 40px 74px;
   border-left: 1px solid #D3D3D3;
@@ -156,57 +190,78 @@ header {
     line-height: 28px;
     color: #9E9E9E;
   }
+}
+
+.my-repositories__list {
+  margin-top: 5px;
+}
+
+
+.followings {
+  .following {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__info {
+      display: flex;
+      align-items: center;
+    }
+
+    &__avatar {
+      height: 72px;
+      width: 72px;
+      border-radius: 50%;
+
+      &.loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #9E9E9E;
+
+        svg {
+          color: #FFF;
+          width: 36px;
+          height: 36px;
+          animation: spinner-loading $img-spinner-time linear infinite;
+        }
+      }
+    }
+
+    &__description {
+      margin-left: 18.4px;
+    }
+
+    &__username {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: -0.1px;
+      color: #262626;
+    }
+
+    &__type {
+      margin-top: 6px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 16px;
+      color: #9E9E9E;
+    }
+
+    &__link {
+      width: 115px;
+      height: 42px;
+    }
+
+    &:not(:first-child) {
+      margin-top: 32px;
+    }
+  }
 
   &__list {
     margin-top: 37px;
-
-    .following {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      &__info {
-        display: flex;
-        align-items: center;
-      }
-
-      &__avatar {
-        height: 72px;
-        width: 72px;
-        border-radius: 50%;
-      }
-
-      &__description {
-        margin-left: 18.4px;
-      }
-
-      &__username {
-        font-style: normal;
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 22px;
-        letter-spacing: -0.1px;
-        color: #262626;
-      }
-
-      &__type {
-        margin-top: 6px;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 12px;
-        line-height: 16px;
-        color: #9E9E9E;
-      }
-
-      &__link {
-        width: 115px;
-        height: 42px;
-      }
-
-      &:not(:first-child) {
-        margin-top: 32px;
-      }
-    }
   }
 }
 
