@@ -20,34 +20,38 @@
       <div class="my-profile">
         <div class="my-profile__head">
           <h3 class="my-profile__title">My profile</h3>
-          <a class="my-profile__change" href="#" @click.prevent="this.isRepo = !this.isRepo">
+          <a class="my-profile__change" href="#"
+             @click.prevent="!canBeChange ? changeDirectory() : ''">
             to {{this.isRepo ?'Following' : 'Repo'}} →
           </a>
         </div>
-        <div class="my-profile" v-if="false">
-          <placeholder :amount="1" />
-        </div>
-        <div class="my-profile__info" v-else>
-          <div class="my-profile__avatar loading" v-if="!isProfileImgLoaded">
-            <icon name="imgSpinner" />
-          </div>
+        <div class="my-profile__info">
           <img
             class="my-profile__avatar"
-            :src="user.data.avatar_url"
-            :alt="user.data.name"
+            :src="user.data?.avatar_url"
+            :alt="user.data?.name"
             @load="profileImgLoaded"
             v-show="isProfileImgLoaded"
           >
+          <div class="my-profile__avatar loading" v-if="!isProfileImgLoaded">
+            <icon name="imgSpinner" />
+          </div>
           <div class="my-profile__description">
-            <h2 class="my-profile__username">{{user.data.login}}</h2>
+            <div class="my-profile__username" v-if="user.loading">
+              <placeholder :amount="1" :rows="1" />
+            </div>
+            <h2 class="my-profile__username" v-else>{{user.data.login}}</h2>
+
             <ul class="my-profile__statistics">
-              <li class="my-profile__reposts"><span class="number">{{user.data.followers}}</span> reposts</li>
+              <li class="my-profile__reposts">
+                <span class="number">{{user.data?.starred?.data?.length}}</span> reposts
+              </li>
               <li class="my-profile__watchers">
-                <span class="number">{{user.data.followers}}</span>
+                <span class="number">{{user.data?.following}}</span>
                 <a href="#" @click.prevent class="watchers">watchers</a>
               </li>
             </ul>
-            <h4 class="my-profile__full-name">{{user.data.name}}</h4>
+            <h4 class="my-profile__full-name">{{user?.data.name}}</h4>
           </div>
         </div>
       </div>
@@ -55,7 +59,7 @@
       <div class="my-repositories" v-if="isRepo">
         <div class="my-repositories__top">
           <div class="my-repositories__title">Repositories</div>
-          <div class="my-repositories__amount">{{user.data.public_repos}}</div>
+          <div class="my-repositories__amount">{{user.data.starred?.data?.length}}</div>
         </div>
         <div class="my-repositories__loading" v-if="user.loading || repos.loading">
           <icon name="imgSpinner" />
@@ -64,7 +68,7 @@
         <posts-container class="my-repositories__list" v-else>
           <template #post>
             <post
-              v-for="n in user.data.repos?.data"
+              v-for="n in user.data.starred?.data"
               :key="n.id"
               :framework-name="n.name"
               :framework-span="n.description?.split(' ')[0]"
@@ -79,18 +83,18 @@
       <div class="followings" v-else>
         <div class="followings__top">
           <h3 class="followings__title">Following</h3>
-          <h5 class="followings__amount">{{user.data.following}}</h5>
+          <h5 class="followings__amount">{{user.data?.following}}</h5>
         </div>
-        <div class="followings__loading" v-if="user.data.followings.loading">
+        <div class="followings__loading" v-if="user.data.followings?.loading">
           <icon name="imgSpinner" />
         </div>
-        <div class="followings__loading" v-else-if="user.data.following.error">
-          {{user.data.followings.error}}
+        <div class="followings__loading" v-else-if="user.data.following?.error">
+          {{user.data.followings?.error}}
         </div>
 
         <ul class="followings__list" v-else>
           <li class="following"
-              v-for="f in user.data.followings.data"
+              v-for="f in user.data.followings?.data"
               :key="f"
           >
             <div class="following__info">
@@ -127,6 +131,8 @@ import postsContainer from '../../components/postsContainer/postsContainer'
 
 import { mapActions, mapState } from 'vuex'
 
+import profileComposition from './profileComposition'
+
 export default {
   name: 'Profile',
   components: {
@@ -139,35 +145,45 @@ export default {
     postsContainer,
     post
   },
-  data () {
+  setup (props, { attr, slots, emit }) {
+    const {
+      isRepo,
+      isProfileImgLoaded,
+      changeDirectory,
+      profileImgLoaded
+    } = profileComposition()
+
     return {
-      isRepo: true,
-      isProfileImgLoaded: false
+      isRepo,
+      isProfileImgLoaded,
+      changeDirectory,
+      profileImgLoaded
     }
   },
   computed: {
     ...mapState({
       repos: state => state.repositories,
       user: state => state.user
-    })
+    }),
+    canBeChange () {
+      return this.user.data?.followings?.loading || this.user.data?.repos?.loading
+    }
   },
   methods: {
     ...mapActions({
-      fetchRepositories: 'repositories/fetchRepositories',
-      fetchIssues: 'issues/fetchIssues',
+      // fetchRepositories: 'repositories/fetchRepositories',
+      // fetchIssues: 'issues/fetchIssues',
       fetchUser: 'user/fetchUser',
-      fetchUserRepos: 'user/fetchUserRepos',
-      fetchUserFollowing: 'user/fetchUserFollowing'
-    }),
-    profileImgLoaded () {
-      this.isProfileImgLoaded = true
-    }
+      // fetchUserRepos: 'user/fetchUserRepos',
+      fetchUserFollowing: 'user/fetchUserFollowing',
+      fetchUserStarredRepos: 'user/fetchUserStarredRepos'
+    })
   },
   async created () {
-    await this.fetchRepositories()
+    // await this.fetchRepositories()
     await this.fetchUser()
-    await this.fetchUserRepos()
     await this.fetchUserFollowing()
+    await this.fetchUserStarredRepos()
   }
 }
 </script>

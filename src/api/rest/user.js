@@ -15,3 +15,7 @@ export const getUserFollowing = (owner) => makeRequest({
 export const getUserFollowers = (owner) => makeRequest({
   url: `/users/${owner}/followers`
 })
+
+export const getUserStarredRepos = (owner) => makeRequest({
+  url: `/users/${owner}/starred`
+})

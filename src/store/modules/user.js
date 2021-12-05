@@ -81,6 +81,30 @@ export default {
           loading: false
         }
       }
+    },
+    async fetchUserStarredRepos ({ state }) {
+      state.data.starred = {
+        data: null,
+        loading: true,
+        error: ''
+      }
+      try {
+        const response = await api.user.getUserStarredRepos(state.data.login)
+        state.data.starred = {
+          ...state.data.starred,
+          data: response.data
+        }
+      } catch (e) {
+        state.data.starred = {
+          ...state.data.starred,
+          error: e.message
+        }
+      } finally {
+        state.data.starred = {
+          ...state.data.starred,
+          loading: false
+        }
+      }
     }
   }
 }

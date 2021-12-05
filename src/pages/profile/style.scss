@@ -85,6 +85,10 @@ header {
 
   &__description {
     margin-left: 20px;
+
+    &.loading {
+      width: 50%;
+    }
   }
 
   &__username {
