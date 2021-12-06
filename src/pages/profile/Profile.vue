@@ -21,7 +21,7 @@
         <div class="my-profile__head">
           <h3 class="my-profile__title">My profile</h3>
           <a class="my-profile__change" href="#"
-             @click.prevent="!canBeChange ? changeDirectory() : ''">
+             @click.prevent="changeDirectory()">
             to {{this.isRepo ?'Following' : 'Repo'}} →
           </a>
         </div>
@@ -56,12 +56,13 @@
         </div>
       </div>
 
-      <div class="my-repositories" v-if="isRepo">
+      <div class="my-repositories" v-show="isRepo">
         <div class="my-repositories__top">
           <div class="my-repositories__title">Repositories</div>
           <div class="my-repositories__amount">{{user.data.starred?.data?.length}}</div>
         </div>
-        <div class="my-repositories__loading" v-if="user.loading || repos.loading">
+        <div class="my-repositories__loading"
+             v-if="user.loading || repos.loading || user.data.starred?.loading">
           <icon name="imgSpinner" />
         </div>
 
@@ -80,7 +81,7 @@
         </posts-container>
       </div>
 
-      <div class="followings" v-else>
+      <div class="followings" v-show="!isRepo">
         <div class="followings__top">
           <h3 class="followings__title">Following</h3>
           <h5 class="followings__amount">{{user.data?.following}}</h5>
@@ -129,8 +130,6 @@ import icon from '../../icons/icon'
 import post from '../../components/posts/posts'
 import postsContainer from '../../components/postsContainer/postsContainer'
 
-import { mapActions, mapState } from 'vuex'
-
 import profileComposition from './profileComposition'
 
 export default {
@@ -147,6 +146,8 @@ export default {
   },
   setup (props, { attr, slots, emit }) {
     const {
+      repos,
+      user,
       isRepo,
       isProfileImgLoaded,
       changeDirectory,
@@ -154,36 +155,13 @@ export default {
     } = profileComposition()
 
     return {
+      repos,
+      user,
       isRepo,
       isProfileImgLoaded,
       changeDirectory,
       profileImgLoaded
     }
-  },
-  computed: {
-    ...mapState({
-      repos: state => state.repositories,
-      user: state => state.user
-    }),
-    canBeChange () {
-      return this.user.data?.followings?.loading || this.user.data?.repos?.loading
-    }
-  },
-  methods: {
-    ...mapActions({
-      // fetchRepositories: 'repositories/fetchRepositories',
-      // fetchIssues: 'issues/fetchIssues',
-      fetchUser: 'user/fetchUser',
-      // fetchUserRepos: 'user/fetchUserRepos',
-      fetchUserFollowing: 'user/fetchUserFollowing',
-      fetchUserStarredRepos: 'user/fetchUserStarredRepos'
-    })
-  },
-  async created () {
-    // await this.fetchRepositories()
-    await this.fetchUser()
-    await this.fetchUserFollowing()
-    await this.fetchUserStarredRepos()
   }
 }
 </script>
