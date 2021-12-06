@@ -5,8 +5,8 @@ import framework from '../../components/framework/framework'
 import issues from '../../components/issues/issues'
 import icon from '../../icons/icon'
 
-import { ref } from 'vue'
-// import { useStore } from 'vuex'
+import { useStore } from 'vuex'
+import { computed, ref } from 'vue'
 
 export default {
   name: 'posts',
@@ -19,21 +19,31 @@ export default {
     stars: Number,
     forks: Number,
     issuesNum: Number,
-    issueUsername: String,
-    issue: String,
     month: String,
     numMonth: String || Number,
     onChange: Function
   },
   setup (props) {
     const isImgLoaded = ref(false)
+    const { dispatch, state, getters } = useStore()
 
     const imgLoaded = () => {
       isImgLoaded.value = !isImgLoaded.value
     }
+
+    const getIssues = async () => {
+      if (state.issues?.loading) return
+      const data = { owner: props.username, repo: props.frameworkName }
+      await dispatch('issues/fetchIssues', data)
+    }
+
     return {
+      repos: computed(() => state.repositories),
+      issues: computed(() => state.issues),
+      checkStateByRepo: computed(() => getters['issues/checkStateByRepo']),
       isImgLoaded,
-      imgLoaded
+      imgLoaded,
+      getIssues
     }
   },
   components: {

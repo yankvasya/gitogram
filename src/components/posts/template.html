@@ -20,9 +20,11 @@
     <issues
             v-if="issuesNum > 0"
             :num="issuesNum"
-            :issue="issue"
             :framework-name="frameworkName"
-            :issue-username="username"
+            :loading="issues?.loading"
+            :error="issues?.error"
+            :current-info="checkStateByRepo(frameworkName)"
+            @loadIssues="getIssues"
     />
 
     <time class="post__date" v-if="month && numMonth">{{numMonth}} {{month}}</time>

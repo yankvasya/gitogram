@@ -6,16 +6,16 @@ import placeholder from '../../components/placeholder/placeholder'
 import icon from '../../icons/icon'
 import toggler from '../toggler/toggler'
 
-import { ref, computed } from 'vue'
-import { useStore } from 'vuex'
+import { ref } from 'vue'
 
 export default {
   name: 'issues',
   props: {
     frameworkName: String,
-    issue: String,
     num: Number,
-    issueUsername: String
+    loading: Boolean,
+    error: String,
+    currentInfo: Object
   },
   components: {
     issue,
@@ -23,32 +23,21 @@ export default {
     icon,
     toggler
   },
+  emits: ['loadIssues'],
   setup (props, { emit }) {
     const isShow = ref(false)
     const currentIssues = ref(false)
-    const { dispatch, state, getters } = useStore()
-
-    const getIssues = async () => {
-      const data = { owner: props.issueUsername, repo: props.frameworkName }
-      await dispatch('issues/fetchIssues', data)
-    }
 
     const hideShow = async () => {
-      if (state.issues?.loading) return
       isShow.value = !isShow.value
-      emit('change', `${!isShow.value ? 'Hide' : 'Show'}`)
       currentIssues.value = true
-      await getIssues()
+      await emit('loadIssues', `${!isShow.value ? 'Hide' : 'Show'}`)
       currentIssues.value = false
     }
 
     return {
-      repos: computed(() => state.repositories),
-      issues: computed(() => state.issues),
-      checkStateByRepo: computed(() => getters['issues/checkStateByRepo']),
       isShow,
       currentIssues,
-      getIssues,
       hideShow
     }
   }

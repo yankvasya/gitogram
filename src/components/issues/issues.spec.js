@@ -5,6 +5,6 @@ describe('issues', () => {
   it('существует', () => {})
 
   it('mount', () => {
-    const wrapper = mount(issues)
+    // const wrapper = mount(issues)
   })
 })

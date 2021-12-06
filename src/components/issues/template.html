@@ -1,20 +1,19 @@
 <div class="issues">
     <toggler
         @toggle="hideShow"
-        :do-not-change="issues?.loading"
+        :do-not-change="loading"
     />
-
     <div class="issues__content" v-if="isShow">
-        <div v-if="issues?.loading && currentIssues">
-            <placeholder :amount="1" />
+        <div v-if="!currentInfo.length">
+            <placeholder :amount="1" :rows="num || 3" />
         </div>
-        <div v-else-if="issues?.error">{{issues?.error}}</div>
+        <div v-else-if="error">{{error}}</div>
 
         <ul v-else
             class="issues__content loaded"
         >
             <issue
-                    v-for="i in checkStateByRepo(frameworkName)"
+                    v-for="i in currentInfo"
                     :key="i"
                     :username="i.user.login"
                     :issue="i.title"
