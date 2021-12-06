@@ -2,10 +2,12 @@
 
 <script>
 import issue from '../../components/issue/issue'
-import { mapActions, mapGetters, mapState } from 'vuex'
 import placeholder from '../../components/placeholder/placeholder'
 import icon from '../../icons/icon'
 import toggler from '../toggler/toggler'
+
+import { ref, computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
   name: 'issues',
@@ -15,51 +17,40 @@ export default {
     num: Number,
     issueUsername: String
   },
-  methods: {
-    ...mapActions({
-      fetchIssues: 'issues/fetchIssues'
-    }),
-    async hideShow () {
-      if (this.issues?.loading) return
-      this.isShow = !this.isShow
-      this.$emit('change', `${!this.isShow ? 'Hide' : 'Show'}`)
-      this.currentIssues = true
-      await this.getIssues()
-      this.currentIssues = false
-    },
-    async returnData (item) {
-      return item.data
-    },
-    async takeIssues (name) {
-      const data = this.checkStateByRepo(name)
-      console.log(data)
-      return data
-    },
-    async getIssues () {
-      const data = { owner: this.issueUsername, repo: this.frameworkName }
-      await this.fetchIssues(data)
-    }
-  },
-  data () {
-    return {
-      isShow: false,
-      currentIssues: false
-    }
-  },
   components: {
     issue,
     placeholder,
     icon,
     toggler
   },
-  computed: {
-    ...mapState({
-      repos: state => state.repositories,
-      issues: state => state.issues
-    }),
-    ...mapGetters({
-      checkStateByRepo: 'issues/checkStateByRepo'
-    })
+  setup (props, { emit }) {
+    const isShow = ref(false)
+    const currentIssues = ref(false)
+    const { dispatch, state, getters } = useStore()
+
+    const getIssues = async () => {
+      const data = { owner: props.issueUsername, repo: props.frameworkName }
+      await dispatch('issues/fetchIssues', data)
+    }
+
+    const hideShow = async () => {
+      if (state.issues?.loading) return
+      isShow.value = !isShow.value
+      emit('change', `${!isShow.value ? 'Hide' : 'Show'}`)
+      currentIssues.value = true
+      await getIssues()
+      currentIssues.value = false
+    }
+
+    return {
+      repos: computed(() => state.repositories),
+      issues: computed(() => state.issues),
+      checkStateByRepo: computed(() => getters['issues/checkStateByRepo']),
+      isShow,
+      currentIssues,
+      getIssues,
+      hideShow
+    }
   }
 }
 </script>

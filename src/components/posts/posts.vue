@@ -5,6 +5,9 @@ import framework from '../../components/framework/framework'
 import issues from '../../components/issues/issues'
 import icon from '../../icons/icon'
 
+import { ref } from 'vue'
+// import { useStore } from 'vuex'
+
 export default {
   name: 'posts',
   props: {
@@ -22,19 +25,15 @@ export default {
     numMonth: String || Number,
     onChange: Function
   },
-  data () {
-    return {
-      num: -1,
-      isImgLoaded: false
+  setup (props) {
+    const isImgLoaded = ref(false)
+
+    const imgLoaded = () => {
+      isImgLoaded.value = !isImgLoaded.value
     }
-  },
-  methods: {
-    forever (n) {
-      this.num = this.random(n)
-      return this.num
-    },
-    imgLoaded () {
-      this.isImgLoaded = true
+    return {
+      isImgLoaded,
+      imgLoaded
     }
   },
   components: {
