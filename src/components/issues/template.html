@@ -1,8 +1,8 @@
 <div class="issues">
-    <a href="#" :class="isShow ? 'toggler' : 'toggler show'" @click.prevent="!issues.loading ? hideShow() : ''">
-        <div class="toggler__title">{{isShow ? 'Hide' : 'Show'}} issues</div>
-        <img src="../../assets/icons/toggler.svg" alt="toggler" class="toggler__arrow">
-    </a>
+    <toggler
+        @toggle="hideShow"
+        :do-not-change="issues.loading"
+    />
 
     <div class="issues__content" v-if="isShow">
         <div v-if="issues.loading && currentIssues">

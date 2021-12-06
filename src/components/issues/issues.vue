@@ -4,6 +4,8 @@
 import issue from '../../components/issue/issue'
 import { mapActions, mapGetters, mapState } from 'vuex'
 import placeholder from '../../components/placeholder/placeholder'
+import icon from '../../icons/icon'
+import toggler from '../toggler/toggler'
 
 export default {
   name: 'issues',
@@ -18,6 +20,7 @@ export default {
       fetchIssues: 'issues/fetchIssues'
     }),
     async hideShow () {
+      if (this.issues?.loading) return
       this.isShow = !this.isShow
       this.$emit('change', `${!this.isShow ? 'Hide' : 'Show'}`)
       this.currentIssues = true
@@ -45,7 +48,9 @@ export default {
   },
   components: {
     issue,
-    placeholder
+    placeholder,
+    icon,
+    toggler
   },
   computed: {
     ...mapState({

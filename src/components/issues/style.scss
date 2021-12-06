@@ -7,20 +7,3 @@
     }
   }
 }
-
-.toggler {
-  display: flex;
-  &__title {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 160%;
-    color: #292929;
-  }
-
-  &.show {
-    .toggler__arrow {
-      transform: rotate(180deg);
-    }
-  }
-}

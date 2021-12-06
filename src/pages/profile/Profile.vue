@@ -144,7 +144,9 @@ export default {
     postsContainer,
     post
   },
-  setup (props, { attr, slots, emit }) {
+  setup () {
+    // props, { attr, slots, emit }
+    // Params
     const {
       repos,
       user,

@@ -1,0 +1,27 @@
+.toggler {
+  display: flex;
+  &__title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 160%;
+    color: #292929;
+  }
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+      color: #212121;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &.show {
+    .toggler__arrow {
+      transform: rotate(180deg);
+    }
+  }
+}
