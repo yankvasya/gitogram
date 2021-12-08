@@ -2,7 +2,7 @@
   <nav class="menu">
     <ul class="menu__list">
       <li class="menu__item">
-        <a href="#" class="menu__link" @click.prevent="emitHomeClick" aria-label="home link">
+        <a href="#" class="menu__link" @click.prevent="goHome" aria-label="home link">
           <icon name="home" />
         </a>
       </li>
@@ -10,7 +10,7 @@
         <div v-show="!isImgLoaded" class="profile__loading">
           <icon name="imgSpinner" />
         </div>
-        <a v-show="isImgLoaded" href="#" class="menu__link" @click.prevent="emitProfileClick" aria-label="profile link">
+        <a v-show="isImgLoaded" href="#" class="menu__link" @click.prevent="goProfile" aria-label="profile link">
           <img :src="profileImg" :alt="profileAlt" class="profile__img" @load="profileImgLoaded">
         </a>
       </li>
@@ -41,20 +41,24 @@ export default {
     imgLoading: Boolean,
     profileAlt: String
   },
-  emits: ['onFinish', 'homeClick', 'profileClick'],
+  emits: ['onFinish', 'homeClick'],
   methods: {
-    emitHomeClick () {
-      this.$emit('homeClick')
-    },
-    emitProfileClick () {
-      this.$emit('profileClick')
-    },
     profileImgLoaded () {
       this.isImgLoaded = true
     },
     profileLogout () {
       localStorage.removeItem('token')
       window.location.reload()
+    },
+    goProfile () {
+      this.$router.push({
+        name: 'profile'
+      })
+    },
+    goHome () {
+      this.$router.push({
+        name: 'home'
+      })
     }
   }
 }

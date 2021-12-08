@@ -5,7 +5,7 @@ export default {
   state: {
     data: [],
     loading: false,
-    error: false
+    error: ''
   },
   getters: {
     checkStateByRepo: (state) => (repo) => {

@@ -4,7 +4,7 @@
       <template #topMenu>
         <topMenu >
           <template #rightMenu>
-            <profile
+            <profile-menu
               :profile-img="user.data?.avatar_url"
               :img-loading="user.loading"
               :profileAlt="user.data?.name"
@@ -13,7 +13,11 @@
         </topMenu>
       </template>
       <template #stories>
-        <stories v-for="n in repos.data" :username="n.owner?.login" :key="n" :stories-img="n.owner?.avatar_url" :id="n.id"/>
+        <div class="x-container">
+          <ul class="stories">
+            <stories v-for="n in repos.data" :username="n.owner?.login" :key="n" :stories-img="n.owner?.avatar_url" :id="n.id"/>
+          </ul>
+        </div>
 <!--        <stories v-for="n in getUnstarredOnly" :username="n.owner?.login" :key="n" :stories-img="n.owner?.avatar_url" :id="n.id"/>-->
       </template>
     </top>
@@ -21,7 +25,7 @@
 
   <main>
 <!--    <pre>{{user}}</pre>-->
-    <posts-container>
+    <posts-container class="container posts-container">
       <template #post>
         <div v-if="repos.loading && !repos.data">loading repositories...</div>
         <div v-else-if="repos.error">{{repos.error}}</div>
@@ -50,7 +54,7 @@ import top from '../../components/header/header'
 import stories from '../../components/stories/stories'
 import post from '../../components/posts/posts'
 import postsContainer from '../../components/postsContainer/postsContainer'
-import profile from '../../components/profile/profile'
+import profileMenu from '../../components/profile/profile'
 
 import { mapState, mapActions, mapGetters } from 'vuex'
 
@@ -59,7 +63,7 @@ export default {
   components: {
     top,
     topMenu,
-    profile,
+    profileMenu,
     stories,
     post,
     postsContainer
@@ -86,7 +90,6 @@ export default {
   },
   async created () {
     await this.fetchRepositories()
-    // await this.fetchIssues(this.repos)
     await this.fetchUser()
     await this.fetchUserRepos()
   }

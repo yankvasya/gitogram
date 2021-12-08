@@ -3,7 +3,7 @@ import * as api from '../../api'
 export default {
   namespaced: true,
   state: {
-    data: null,
+    data: [],
     loading: false,
     error: ''
   },
@@ -11,30 +11,12 @@ export default {
   mutations: {
     SET_USER_DATA (state, payload) {
       state.data = payload
-      // state.data = payload.map(item => {
-      //   item.repo = {
-      //     data: null,
-      //     loading: false,
-      //     error: ''
-      //   }
-      //
-      //   return item
-      // })
     },
     SET_USER_LOADING (state, payload) {
       state.loading = payload
     },
     SET_USER_ERROR (state, payload) {
       state.error = payload
-    },
-    SET_USER_REPO_DATA (state, payload) {
-      state.data.repo.data = payload
-    },
-    SET_USER_REPO_LOADING (state, payload) {
-      state.data.repo.loading = payload
-    },
-    SET_USER_REPO_ERROR (state, payload) {
-      state.data.repo.error = payload
     }
   },
   actions: {
@@ -52,22 +34,77 @@ export default {
         commit('SET_USER_LOADING', false)
       }
     },
-    async fetchUserRepos ({ state, commit }) {
-      // commit('SET_USER_REPO_ERROR', '')
-      // commit('SET_USER_REPO_LOADING', true)
-      // try {
-      //   const response = await api.user.getUserRepos(state.data.login)
-      //   const data = response
-      //   console.log(response)
-      //   commit('SET_USER_REPO_DATA', data)
-      // } catch (e) {
-      //   commit('SET_USER_REPO_ERROR', {
-      //     status: false,
-      //     error: e.message
-      //   })
-      // } finally {
-      //   commit('SET_USER_REPO_LOADING', false)
-      // }
+    async fetchUserRepos ({ state }) {
+      state.data.repos = {
+        data: null,
+        loading: true,
+        error: ''
+      }
+      try {
+        const response = await api.user.getUserRepos(state.data.login)
+        state.data.repos = {
+          ...state.data.repos,
+          data: response.data
+        }
+      } catch (e) {
+        state.data.repos = {
+          ...state.data.repos,
+          error: e.message
+        }
+      } finally {
+        state.data.repos = {
+          ...state.data.repos,
+          loading: false
+        }
+      }
+    },
+    async fetchUserFollowing ({ state }) {
+      state.data.followings = {
+        data: null,
+        loading: true,
+        error: ''
+      }
+      try {
+        const response = await api.user.getUserFollowing(state.data.login)
+        state.data.followings = {
+          ...state.data.followings,
+          data: response.data
+        }
+      } catch (e) {
+        state.data.followings = {
+          ...state.data.followings,
+          error: e.message
+        }
+      } finally {
+        state.data.followings = {
+          ...state.data.followings,
+          loading: false
+        }
+      }
+    },
+    async fetchUserStarredRepos ({ state }) {
+      state.data.starred = {
+        data: null,
+        loading: true,
+        error: ''
+      }
+      try {
+        const response = await api.user.getUserStarredRepos(state.data.login)
+        state.data.starred = {
+          ...state.data.starred,
+          data: response.data
+        }
+      } catch (e) {
+        state.data.starred = {
+          ...state.data.starred,
+          error: e.message
+        }
+      } finally {
+        state.data.starred = {
+          ...state.data.starred,
+          loading: false
+        }
+      }
     }
   }
 }

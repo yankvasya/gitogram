@@ -1,8 +1,6 @@
 <template>
   <ul class="placeholders" v-for="n of amount" :key="n">
-    <li class="placeholder" />
-    <li class="placeholder" />
-    <li class="placeholder" />
+    <li class="placeholder" v-for="i in (rows || 3)" :key="i"/>
   </ul>
 </template>
 
@@ -10,7 +8,8 @@
 export default {
   name: 'placeholder',
   props: {
-    amount: Number
+    amount: Number,
+    rows: Number
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <li class="post">
-    <div class="post__author">
+    <div class="post__author" v-if="postImg">
         <div class="post__img loading" v-if="!isImgLoaded">
            <icon name="imgSpinner" />
         </div>
@@ -8,7 +8,6 @@
                 v-show="isImgLoaded" @load="imgLoaded">
         <h3 class="post__nickname">{{username}}</h3>
     </div>
-
     <framework
             :title="frameworkName"
             :span="frameworkSpan"
@@ -21,10 +20,12 @@
     <issues
             v-if="issuesNum > 0"
             :num="issuesNum"
-            :issue="issue"
             :framework-name="frameworkName"
-            :issue-username="username"
+            :loading="issues?.loading"
+            :error="issues?.error"
+            :current-info="checkStateByRepo(frameworkName)"
+            @loadIssues="getIssues"
     />
 
-    <time class="post__date">{{numMonth}} {{month}}</time>
+    <time class="post__date" v-if="month && numMonth">{{numMonth}} {{month}}</time>
 </li>

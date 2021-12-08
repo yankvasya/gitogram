@@ -1,46 +1,63 @@
 import issues from './issues'
-import { action } from '@storybook/addon-actions'
-import { withKnobs, text, number } from '@storybook/addon-knobs'
-import { optionsIssues } from '../globalProperties'
-
-const methods = {
-  onChange: action('onChange')
-}
 
 export default {
   title: 'issues',
   components: { issues },
-  decorators: [withKnobs]
+  argTypes: {
+    loadIssues: {
+      action: 'button click',
+      description: 'if button was clicked'
+    },
+    frameworkName: { type: 'text' },
+    num: { type: 'range' },
+    loading: { type: 'boolean' },
+    error: { type: 'text' },
+    currentInfo: { type: 'object' }
+  }
 }
 
-export const defaultViewIssues = () => ({
+export const DefaultViewIssues = (args) => ({
   components: {
     issues
   },
-  props: {
-    username: {
-      default: text('Username', 'username')
-    },
-    issue: {
-      default: text('Issue', 'transition-group with flex parent causes removed items to fly')
-    },
-    num: {
-      default: number('Number', 2, optionsIssues)
+  data () {
+    return {
+      args
     }
   },
   template: `
     <issues
-      @change="onChange"
-      :username="username"
-      :issue="issue"
-      :num="num"
+      v-bind="args"
+      @load-issues="args.loadIssues"
     >
 
     </issues>
-  `,
-  methods
+  `
 })
 
-defaultViewIssues.story = {
+DefaultViewIssues.story = {
   name: 'Стандартный вид'
+}
+
+DefaultViewIssues.args = {
+  frameworkName: 'React.js',
+  num: 3,
+  loading: false,
+  error: '',
+  currentInfo: [
+    {
+      title: 'title',
+      user: {
+        login: 'username'
+      },
+      length: 3
+    },
+    {
+      title: 'title',
+      user: {
+        login: 'username'
+      },
+      length: 3
+    }
+  ]
 }

@@ -1,13 +1,9 @@
 <template src="./template.html" />
 
 <script>
-import stories from '../stories/stories'
 
 export default {
-  name: 'top',
-  components: {
-    stories
-  }
+  name: 'top'
 }
 </script>
 

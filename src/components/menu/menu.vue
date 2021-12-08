@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     logoClick () {
-      this.$emit('change', 'logo click')
+      this.$router.replace({ name: 'home' })
     }
   }
 }
