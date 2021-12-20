@@ -15,22 +15,20 @@
       <template #stories>
         <div class="x-container">
           <ul class="stories">
-            <stories v-for="n in repos.data" :username="n.owner?.login" :key="n" :stories-img="n.owner?.avatar_url" :id="n.id"/>
+            <stories v-for="n in getUnstarredOnly" :username="n.owner?.login" :key="n" :stories-img="n.owner?.avatar_url" :id="n.id"/>
           </ul>
         </div>
-<!--        <stories v-for="n in getUnstarredOnly" :username="n.owner?.login" :key="n" :stories-img="n.owner?.avatar_url" :id="n.id"/>-->
       </template>
     </top>
   </header>
 
   <main>
-<!--    <pre>{{user}}</pre>-->
     <posts-container class="container posts-container">
       <template #post>
-        <div v-if="repos.loading && !repos.data">loading repositories...</div>
-        <div v-else-if="repos.error">{{repos.error}}</div>
+        <div v-if="user.data.starred?.loading">loading repositories...</div>
+        <div v-else-if="user.data.starred?.error">{{repos.error}}</div>
         <post
-          v-for="n in repos.data"
+          v-for="n in user.data.starred?.data"
           :key="n.id"
           :username="n.owner?.login"
           :post-img="n.owner?.avatar_url"
@@ -78,7 +76,8 @@ export default {
       fetchRepositories: 'repositories/fetchRepositories',
       fetchIssues: 'issues/fetchIssues',
       fetchUser: 'user/fetchUser',
-      fetchUserRepos: 'user/fetchUserRepos'
+      fetchUserRepos: 'user/fetchUserRepos',
+      fetchUserStarredRepos: 'user/fetchUserStarredRepos'
     })
   },
   computed: {
@@ -89,9 +88,9 @@ export default {
     ...mapGetters(['getUnstarredOnly'])
   },
   async created () {
-    await this.fetchRepositories()
-    await this.fetchUser()
-    await this.fetchUserRepos()
+    !this.user.data?.length && await this.fetchUser()
+    !this.user.data.starred?.data?.length && await this.fetchUserStarredRepos()
+    !this.repos.data?.length && await this.fetchRepositories()
   }
 }
 </script>

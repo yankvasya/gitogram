@@ -10,7 +10,7 @@ export default {
   getters: {},
   mutations: {
     SET_USER_DATA (state, payload) {
-      state.data = payload
+      state.data = !state.data.length ? payload : [...state.data, ...payload]
     },
     SET_USER_LOADING (state, payload) {
       state.loading = payload
@@ -29,7 +29,6 @@ export default {
         commit('SET_USER_DATA', data)
       } catch (e) {
         commit('SET_USER_ERROR', `Не удалось получить данные пользователя ${e}`)
-        console.log(e)
       } finally {
         commit('SET_USER_LOADING', false)
       }

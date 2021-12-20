@@ -7,8 +7,8 @@ import readme from './modules/readme'
 export default createStore({
   getters: {
     getUnstarredOnly (state) {
-      // return state.repositories.data.filter(repo => !state.starred.data.some(star => star.id === repo.id))
-      // return state.repositories.data.filter(repo => state.repositories.following)
+      return state.repositories.data
+        ?.filter(repo => !state.user?.data?.starred?.data?.some(star => star.id === repo.id))
     }
   },
   modules: {
