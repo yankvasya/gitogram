@@ -1,7 +1,7 @@
-# gitogram
-
-### Vue, Vue-Cli, Vuex, Vue-router, Storybook, Composition API 
+# gitogram #
 \
+ 
+### Vue, Vue-Cli, Vuex, Vue-router, Storybook, Composition API 
 \
 \
 <em>Социальная сеть на github api</em>\
